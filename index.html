@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  
+  <!-- Primary Meta Tags -->
+  <title>ZeroFrik — We build simple products that solve real problems.</title>
+  <meta name="title" content="ZeroFrik — We build simple products that solve real problems.">
+  <meta name="description" content="ZeroFrik is an independent product company that discovers real-world problems, builds focused solutions, and grows useful products. Explore OneTap and our approach.">
+  <meta name="keywords" content="ZeroFrik, software, simple products, real problems, product company, OneTap, offline expense tracking, discipline-led">
+  <meta name="author" content="ZeroFrik">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f7f8fb">
+  <link rel="canonical" href="https://zerofrik.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerofrik.com/">
+  <meta property="og:title" content="ZeroFrik — We build simple products that solve real problems.">
+  <meta property="og:description" content="ZeroFrik is an independent product company that discovers real-world problems, builds focused solutions, and grows useful products.">
+  <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuB4llE_V8EQt35u5RE7dGzoDaLVb8lqWxIfjGh1ZwuXBb2cQSQ4AfmZRjDxq8OOvnODce6geJQ1yaJpCJ5xvp-Gz7WIhxr-pgF7PlxVgTZbUgMg5DSPejd6qHF9KDcf72S_4E5SgiWcFYnmRKwx2eXENeWWT0uPqqcRvPnNPdteDcDEqrlz5VelMVLOvFnM1a8YobhCgN1rCMQtV4WkHWsYweEVOjoisCgmJ8jykeEWNx7lkXP6BjdMZlqrZ_3kKo21HQ">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://zerofrik.com/">
+  <meta property="twitter:title" content="ZeroFrik — We build simple products that solve real problems.">
+  <meta property="twitter:description" content="ZeroFrik is an independent product company that discovers real-world problems, builds focused solutions, and grows useful products.">
+  <meta property="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuB4llE_V8EQt35u5RE7dGzoDaLVb8lqWxIfjGh1ZwuXBb2cQSQ4AfmZRjDxq8OOvnODce6geJQ1yaJpCJ5xvp-Gz7WIhxr-pgF7PlxVgTZbUgMg5DSPejd6qHF9KDcf72S_4E5SgiWcFYnmRKwx2eXENeWWT0uPqqcRvPnNPdteDcDEqrlz5VelMVLOvFnM1a8YobhCgN1rCMQtV4WkHWsYweEVOjoisCgmJ8jykeEWNx7lkXP6BjdMZlqrZ_3kKo21HQ">
+
+  <!-- Performance: Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://lh3.googleusercontent.com">
+
+  <!-- Performance: Preload Critical Assets -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuB4llE_V8EQt35u5RE7dGzoDaLVb8lqWxIfjGh1ZwuXBb2cQSQ4AfmZRjDxq8OOvnODce6geJQ1yaJpCJ5xvp-Gz7WIhxr-pgF7PlxVgTZbUgMg5DSPejd6qHF9KDcf72S_4E5SgiWcFYnmRKwx2eXENeWWT0uPqqcRvPnNPdteDcDEqrlz5VelMVLOvFnM1a8YobhCgN1rCMQtV4WkHWsYweEVOjoisCgmJ8jykeEWNx7lkXP6BjdMZlqrZ_3kKo21HQ" fetchpriority="high">
+
+  <!-- CSS: Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS: Material Icons (Loaded asynchronously to prevent render blocking) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "background": "#f8f9fc",
+            "surface-container": "#f0f2f6",
+            "surface-container-highest": "#e5e8ee",
+            "on-surface-variant": "#474d57",
+            "outline-variant": "#d7dbe3",
+            "outline": "#78808d",
+            "secondary": "#535967",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f6fa",
+            "surface": "#fbfcfd",
+            "on-surface": "#121720",
+            "primary-container": "#131a26",
+            "primary": "#080e1a",
+            "secondary-container": "#dce3f0",
+            "vaultDark": "#121316",
+            "vaultGold": "#d6a858"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.375rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.5rem",
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem",
+            "gutter-tablet": "1.5rem"
+          },
+          "fontFamily": {
+            "sans": ["Hanken Grotesk", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"],
+            "body": ["Hanken Grotesk", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Structured Data (JSON-LD) for Google SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ZeroFrik",
+    "url": "https://zerofrik.com",
+    "logo": "https://lh3.googleusercontent.com/aida-public/AB6AXuB4llE_V8EQt35u5RE7dGzoDaLVb8lqWxIfjGh1ZwuXBb2cQSQ4AfmZRjDxq8OOvnODce6geJQ1yaJpCJ5xvp-Gz7WIhxr-pgF7PlxVgTZbUgMg5DSPejd6qHF9KDcf72S_4E5SgiWcFYnmRKwx2eXENeWWT0uPqqcRvPnNPdteDcDEqrlz5VelMVLOvFnM1a8YobhCgN1rCMQtV4WkHWsYweEVOjoisCgmJ8jykeEWNx7lkXP6BjdMZlqrZ_3kKo21HQ",
+    "description": "ZeroFrik is a product company that discovers real-world problems, builds focused solutions, and grows the products that people actually find useful.",
+    "sameAs": []
+  }
+  </script>
+
+  <style>
+    /* Critical CSS Inline */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    ::selection {
+      background-color: #131a26;
+      color: #ffffff;
+    }
+    .grid-blueprint {
+      background-image: radial-gradient(rgba(19, 26, 38, 0.08) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .grid-blueprint-dense {
+      background-image: 
+        linear-gradient(to right, rgba(200, 207, 218, 0.28) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 207, 218, 0.28) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    /* Hide unstyled elements to prevent layout shift */
+    .material-symbols-outlined {
+      visibility: hidden;
+    }
+    .material-symbols-outlined:not(:empty) {
+      visibility: visible;
+    }
+  </style>
+</head>
+<body class="bg-[#f5f6f9] text-[#121720] antialiased selection:bg-primary-container selection:text-white font-sans min-h-screen">
+  
+  <!-- TOP NAVIGATION -->
+  <header class="docked full-width top-0 sticky z-50 bg-[#ffffff]/90 backdrop-blur-md border-b border-[#dce1ea]" role="banner">
+    <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter flex items-center justify-between h-16 w-full">
+      
+      <!-- Brand Logo -->
+      <a class="flex items-center gap-2.5 group" href="/" aria-label="ZeroFrik Homepage">
+        <img alt="ZeroFrik Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4llE_V8EQt35u5RE7dGzoDaLVb8lqWxIfjGh1ZwuXBb2cQSQ4AfmZRjDxq8OOvnODce6geJQ1yaJpCJ5xvp-Gz7WIhxr-pgF7PlxVgTZbUgMg5DSPejd6qHF9KDcf72S_4E5SgiWcFYnmRKwx2eXENeWWT0uPqqcRvPnNPdteDcDEqrlz5VelMVLOvFnM1a8YobhCgN1rCMQtV4WkHWsYweEVOjoisCgmJ8jykeEWNx7lkXP6BjdMZlqrZ_3kKo21HQ" width="32" height="32" fetchpriority="high" decoding="sync"/>
+        <div class="flex flex-col">
+          <span class="font-bold tracking-tight text-[#080e1a] text-lg leading-none font-sans uppercase">ZeroFrik</span>
+          <span class="text-[9px] font-mono tracking-wider text-[#6e7787] uppercase leading-tight mt-0.5">Software • Zero Friction</span>
+        </div>
+      </a>
+      
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8" aria-label="Main Navigation">
+        <a class="text-xs font-mono text-[#535967] hover:text-[#080e1a] transition-colors py-1 flex items-center gap-1.5" href="#products">
+          <span class="w-1.5 h-1.5 bg-[#080e1a] rounded-none" aria-hidden="true"></span> Products
+        </a>
+        <a class="text-xs font-mono text-[#535967] hover:text-[#080e1a] transition-colors py-1" href="#approach">Approach</a>
+        <a class="text-xs font-mono text-[#535967] hover:text-[#080e1a] transition-colors py-1" href="#portfolio">Portfolio</a>
+        <a class="text-xs font-mono text-[#535967] hover:text-[#080e1a] transition-colors py-1" href="#about">About</a>
+      </nav>
+      
+      <!-- Trailing Action -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-1 px-2 py-0.5 border border-[#d2d7e2] bg-[#f2f4f8] rounded text-[11px] font-mono text-[#535967]" role="status" aria-live="polite">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" aria-hidden="true"></span>
+          <span>SYS // OPERATIONAL</span>
+        </div>
+        <a class="inline-flex items-center justify-center h-9 px-4 text-xs font-mono font-medium border border-[#cfd4df] bg-[#ffffff] text-[#080e1a] hover:border-[#080e1a] hover:bg-[#f8f9fc] transition-all rounded shadow-sm" href="#contact">
+          Contact
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  <main class="relative" id="main-content">
+    
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden border-b border-[#d8dce6] bg-[#f7f8fb] pt-16 pb-20 md:pt-24 md:pb-28" aria-labelledby="hero-heading">
+      
+      <!-- Faint Technical Grid Background -->
+      <div class="absolute inset-0 pointer-events-none grid-blueprint opacity-85 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_40%,#000_50%,transparent_100%)]" aria-hidden="true"></div>
+      
+      <!-- Structural Hairline Crosshair Markers -->
+      <div class="absolute top-4 left-6 text-[11px] font-mono text-[#a5adbb] select-none pointer-events-none" aria-hidden="true">+ ZF-001/ENG</div>
+      <div class="absolute top-4 right-6 text-[11px] font-mono text-[#a5adbb] select-none pointer-events-none" aria-hidden="true">+ LAT: 28.6139° N</div>
+      
+      <!-- Soft Ambient Radial Glow -->
+      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] bg-gradient-to-tr from-slate-300/35 via-[#e2e7f3]/40 to-transparent rounded-full blur-3xl pointer-events-none -z-10" aria-hidden="true"></div>
+      
+      <!-- Network Node Motif Watermark -->
+      <div class="absolute right-0 lg:right-12 top-10 md:top-8 w-[320px] md:w-[480px] opacity-[0.06] pointer-events-none select-none -z-0" aria-hidden="true">
+        <img alt="Decorative network node motif" class="w-full h-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbvMoENgqG4sy6Ls5iIycxl-M-7u_xAMzcp09L1UnSeT2Cd3YDJ6LnvS84tE-3k1oei6X8vYBaJwgaaPqvai4AoFJEl-unlk3GeHbnEhMZoJbd8VgNLEGLbkqnXejgZ0zeG6hf5-LMyOOZeuDtc0AgA00FYrZtd_dvkkDgwSrjw_H4GZlLPuImHN7eamAzZv0rfMwctgCAXUWmnsTebBy9IEHQgfXNG9VBHDfcHJgvz7LyxkWPPVWyP8j8YQIRR8khHw" width="480" height="480" loading="eager" decoding="async"/>
+      </div>
+      
+      <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter relative z-10">
+        <div class="max-w-3xl">
+          
+          <!-- Sub-badge indicator -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-[#cfd5e2] bg-[#ffffff]/90 backdrop-blur-sm rounded text-[11px] font-mono text-[#444a56] shadow-sm" aria-label="Company Identity Badge">
+            <span class="w-2 h-2 bg-[#080e1a] rounded-none" aria-hidden="true"></span>
+            <span class="tracking-wider uppercase font-semibold">Independent Product Company</span>
+            <span class="text-[#9ea6b5]" aria-hidden="true">/</span>
+            <span class="text-[#646e7f]">Discipline-Led</span>
+          </div>
+          
+          <h1 id="hero-heading" class="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[#080e1a] mb-6 leading-[1.08]">
+            We build simple products that solve real problems.
+          </h1>
+          <p class="text-base sm:text-lg md:text-xl text-[#4a5160] max-w-2xl mb-10 leading-relaxed font-normal">
+            ZeroFrik is a product company that discovers real-world problems, builds focused solutions, and grows the products that people actually find useful.
+          </p>
+          
+          <!-- CTA Cluster -->
+          <div class="flex flex-wrap items-center gap-3">
+            <a class="inline-flex items-center justify-center h-11 px-6 bg-[#080e1a] text-white text-xs font-mono font-medium rounded hover:bg-[#1a2333] transition-all shadow-sm gap-2" href="#products">
+              <span>Explore our products</span>
+              <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_downward</span>
+            </a>
+            <a class="inline-flex items-center justify-center h-11 px-6 border border-[#cfd5e2] bg-[#ffffff] text-[#121720] text-xs font-mono font-medium rounded hover:border-[#080e1a] hover:bg-[#f6f8fb] transition-all shadow-sm" href="#approach">
+              How we build
+            </a>
+          </div>
+        </div>
+        
+        <!-- Architectural Methodology Pipeline -->
+        <div class="mt-16 pt-8 border-t border-[#d8dce6] relative">
+          <div class="flex items-center justify-between text-[11px] font-mono text-[#747e90] mb-4 tracking-wider uppercase">
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-[#747e90]" aria-hidden="true"></span> Methodology Pipeline</span>
+            <span>Stage 01 — 04</span>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Step 1 -->
+            <div class="bg-[#ffffff] border border-[#d6dbe6] rounded p-5 shadow-sm hover:border-[#b0b8c8] transition-colors relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-8 h-8 bg-[#f2f4f8] border-b border-l border-[#e0e4ed] flex items-center justify-center text-[10px] font-mono text-[#747e90]" aria-hidden="true">01</div>
+              <div class="text-[11px] font-mono text-[#5f6878] tracking-wider uppercase mb-1">Discovery</div>
+              <div class="text-base font-semibold text-[#080e1a] mb-1.5">Problem</div>
+              <p class="text-xs text-[#525968] leading-normal">Identify non-trivial daily friction from authentic observation.</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="bg-[#ffffff] border border-[#d6dbe6] rounded p-5 shadow-sm hover:border-[#b0b8c8] transition-colors relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-8 h-8 bg-[#f2f4f8] border-b border-l border-[#e0e4ed] flex items-center justify-center text-[10px] font-mono text-[#747e90]" aria-hidden="true">02</div>
+              <div class="text-[11px] font-mono text-[#5f6878] tracking-wider uppercase mb-1">Execution</div>
+              <div class="text-base font-semibold text-[#080e1a] mb-1.5">Build</div>
+              <p class="text-xs text-[#525968] leading-normal">Create minimal, robust mechanisms without decorative fluff.</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="bg-[#ffffff] border border-[#d6dbe6] rounded p-5 shadow-sm hover:border-[#b0b8c8] transition-colors relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-8 h-8 bg-[#f2f4f8] border-b border-l border-[#e0e4ed] flex items-center justify-center text-[10px] font-mono text-[#747e90]" aria-hidden="true">03</div>
+              <div class="text-[11px] font-mono text-[#5f6878] tracking-wider uppercase mb-1">Empirical</div>
+              <div class="text-base font-semibold text-[#080e1a] mb-1.5">Validate</div>
+              <p class="text-xs text-[#525968] leading-normal">Measure genuine organic adoption and habitual retention.</p>
+            </div>
+            <!-- Step 4 -->
+            <div class="bg-[#ffffff] border border-[#d6dbe6] rounded p-5 shadow-sm hover:border-[#b0b8c8] transition-colors relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-8 h-8 bg-[#f2f4f8] border-b border-l border-[#e0e4ed] flex items-center justify-center text-[10px] font-mono text-[#747e90]" aria-hidden="true">04</div>
+              <div class="text-[11px] font-mono text-[#5f6878] tracking-wider uppercase mb-1">Discipline</div>
+              <div class="text-base font-semibold text-[#080e1a] mb-1.5">Grow</div>
+              <p class="text-xs text-[#525968] leading-normal">Invest capital and team focus only when utility is realized.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- EDITORIAL STANCE (Recessed Structural Section) -->
+    <section class="border-b border-[#d8dce6] bg-[#eef1f6] py-16 md:py-20 relative" aria-labelledby="stance-heading">
+      <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
+        <div class="bg-[#ffffff] border border-[#d0d6e2] rounded-xl p-8 md:p-12 shadow-sm relative overflow-hidden">
+          
+          <!-- Structural corner notation -->
+          <div class="flex items-center justify-between border-b border-[#e5e9f0] pb-4 mb-8">
+            <div class="inline-flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#080e1a]" aria-hidden="true"></span>
+              <span class="text-xs font-mono uppercase tracking-wider text-[#525968] font-semibold">Our Core Stance</span>
+            </div>
+            <span class="text-[10px] font-mono text-[#8a94a6]" aria-hidden="true">ARCH-REF // ZERO-STANCE-01</span>
+          </div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#e5e9f0] pb-6 lg:pb-0 lg:pr-8">
+              <h2 id="stance-heading" class="text-2xl font-bold tracking-tight text-[#080e1a] mb-2 font-sans">
+                We start with problems.
+              </h2>
+              <p class="text-xs font-mono text-[#616a7a]">
+                Observation preceded by zero preconceived product agendas.
+              </p>
+            </div>
+            <div class="lg:col-span-8 space-y-4">
+              <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-[#080e1a] tracking-tight leading-snug">
+                We don’t build software looking for a problem.
+              </h3>
+              <p class="text-sm sm:text-base text-[#4a5160] leading-relaxed font-normal">
+                We look for problems people genuinely experience, understand the existing alternatives, build a focused solution, and put it in the hands of real users. If people find it valuable, we keep building.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- OUR APPROACH (Crisp Surface Section) -->
+    <section class="border-b border-[#d8dce6] bg-[#fbfcfd] py-20 md:py-28" id="approach" aria-labelledby="approach-heading">
+      <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 pb-6 border-b border-[#e1e5ee]">
+          <div>
+            <div class="inline-flex items-center gap-2 mb-2">
+              <span class="w-1.5 h-1.5 bg-[#404756] rounded-none" aria-hidden="true"></span>
+              <span class="text-xs font-mono tracking-wider text-[#575f70] uppercase">The Discipline</span>
+            </div>
+            <h2 id="approach-heading" class="text-2xl sm:text-3xl font-semibold text-[#080e1a] tracking-tight">
+              From real problems to useful products.
+            </h2>
+          </div>
+          <div class="text-[11px] font-mono text-[#788294]" aria-hidden="true">
+            FRAMEWORK // ZERO-DISCIPLINE-V1
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Step 01 -->
+          <div class="bg-[#ffffff] border border-[#d6dbe6] p-6 rounded-lg shadow-sm flex flex-col justify-between hover:border-[#9ea8bb] transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="text-xs font-mono text-[#080e1a] font-semibold">01 — DISCOVER</span>
+                <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
+              </div>
+              <h3 class="text-base font-semibold text-[#080e1a] mb-2">Discover</h3>
+              <p class="text-xs text-[#525968] leading-relaxed">
+                Find problems worth solving through research, user interviews, community forums, reviews, and real-world observation.
+              </p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-[#edf0f5] flex items-center justify-between text-[#687284]">
+              <span class="text-[11px] font-mono">Primary Input</span>
+              <span class="material-symbols-outlined text-sm" aria-hidden="true">travel_explore</span>
+            </div>
+          </div>
+          <!-- Step 02 -->
+          <div class="bg-[#ffffff] border border-[#d6dbe6] p-6 rounded-lg shadow-sm flex flex-col justify-between hover:border-[#9ea8bb] transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="text-xs font-mono text-[#080e1a] font-semibold">02 — VALIDATE</span>
+                <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
+              </div>
+              <h3 class="text-base font-semibold text-[#080e1a] mb-2">Validate</h3>
+              <p class="text-xs text-[#525968] leading-relaxed">
+                Understand whether the problem is painful enough and whether people actually want a better, simpler solution.
+              </p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-[#edf0f5] flex items-center justify-between text-[#687284]">
+              <span class="text-[11px] font-mono">Signal Check</span>
+              <span class="material-symbols-outlined text-sm" aria-hidden="true">fact_check</span>
+            </div>
+          </div>
+          <!-- Step 03 -->
+          <div class="bg-[#ffffff] border border-[#d6dbe6] p-6 rounded-lg shadow-sm flex flex-col justify-between hover:border-[#9ea8bb] transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="text-xs font-mono text-[#080e1a] font-semibold">03 — BUILD</span>
+                <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
+              </div>
+              <h3 class="text-base font-semibold text-[#080e1a] mb-2">Build</h3>
+              <p class="text-xs text-[#525968] leading-relaxed">
+                Create simple, focused products that solve the core problem without unnecessary bloat, servers, or lock-in.
+              </p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-[#edf0f5] flex items-center justify-between text-[#687284]">
+              <span class="text-[11px] font-mono">Lean Scope</span>
+              <span class="material-symbols-outlined text-sm" aria-hidden="true">architecture</span>
+            </div>
+          </div>
+          <!-- Step 04 -->
+          <div class="bg-[#ffffff] border border-[#d6dbe6] p-6 rounded-lg shadow-sm flex flex-col justify-between hover:border-[#9ea8bb] transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="text-xs font-mono text-[#080e1a] font-semibold">04 — GROW</span>
+                <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
+              </div>
+              <h3 class="text-base font-semibold text-[#080e1a] mb-2">Grow</h3>
+              <p class="text-xs text-[#525968] leading-relaxed">
+                Put products in the hands of real users, learn from them, and invest further only when they show genuine traction.
+              </p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-[#edf0f5] flex items-center justify-between text-[#687284]">
+              <span class="text-[11px] font-mono">Traction Loop</span>
+              <span class="material-symbols-outlined text-sm" aria-hidden="true">trending_up</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- RESTORED FLAGSHIP SHOWCASE: OneTap -->
+    <section class="border-b border-[#d8dce6] bg-[#eef1f6] py-20 md:py-28 relative overflow-hidden" id="products" aria-labelledby="products-heading">
+      <!-- Faint grid background for technical depth -->
+      <div class="absolute inset-0 pointer-events-none grid-blueprint-dense opacity-60" aria-hidden="true"></div>
+      
+      <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter relative z-10">
+        <!-- Section Tag Header -->
+        <div class="flex items-center justify-between mb-8 pb-3 border-b border-[#d5dbe6]">
+          <div class="inline-flex items-center gap-2">
+            <span class="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" aria-hidden="true"></span>
+            <span class="text-xs font-mono uppercase tracking-wider text-[#3d4554] font-semibold">FLAGSHIP PRODUCT // ACTIVE</span>
+          </div>
+          <span class="text-xs font-mono text-[#6c7688]" aria-hidden="true">ID: ZF-PRD-01 // PRODUCTION</span>
+        </div>
+        
+        <!-- Unified High-Impact Single Flagship Card -->
+        <div class="bg-[#ffffff] border border-[#cfd6e2] rounded-2xl p-6 sm:p-10 lg:p-12 shadow-md relative overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            <!-- Left Column: Value Prop & Specs -->
+            <div class="lg:col-span-7 space-y-6">
+              
+              <!-- OneTap Brand Header -->
+              <div class="flex items-center gap-4">
+                <div class="relative w-14 h-14 rounded-full border border-[#b88c42] bg-[#161410] flex items-center justify-center shadow-md flex-shrink-0" aria-hidden="true">
+                  <div class="absolute inset-1 rounded-full border border-dashed border-[#b88c42]/50"></div>
+                  <span class="text-[#d8ab5c] font-serif text-2xl font-bold tracking-tighter">1</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h2 id="products-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-[#080e1a]">OneTap</h2>
+                    <span class="w-2 h-2 rounded-full bg-[#d6a858]" aria-hidden="true"></span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#f3ece0] text-[#916b25] border border-[#dfcca7]">100% OFFLINE</span>
+                  </div>
+                  <p class="text-sm font-mono text-[#788294] mt-0.5">The Offline Vault • Android Native Personal Finance</p>
+                </div>
+              </div>
+              
+              <!-- Value Proposition -->
+              <div class="space-y-3">
+                <p class="text-base sm:text-lg text-[#252b36] font-medium leading-snug">
+                  Instant offline expense tracking that intercepts spends via Android notifications before you switch apps. Zero cloud footprint, sub-1-second logging, 100% on-device SQLite.
+                </p>
+                <p class="text-xs sm:text-sm text-[#575f6f] leading-relaxed">
+                  Every conventional expense tracker forces you to choose between exhausting manual entry or granting bank SMS access to cloud servers. OneTap presents an instant, floating 1-tap categorizer over your payment confirmation, logs directly to local storage, and disappears.
+                </p>
+              </div>
+              
+              <!-- Architectural Highlights Chips -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                <div class="flex items-start gap-2 p-2.5 rounded bg-[#f6f8fb] border border-[#e2e6ee]">
+                  <span class="material-symbols-outlined text-base text-[#080e1a] mt-0.5" aria-hidden="true">bolt</span>
+                  <div>
+                    <div class="text-xs font-semibold text-[#080e1a]">Sub-1-Second Flow</div>
+                    <div class="text-[11px] text-[#636c7c]">Categorize at the moment of payment</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2 p-2.5 rounded bg-[#f6f8fb] border border-[#e2e6ee]">
+                  <span class="material-symbols-outlined text-base text-[#080e1a] mt-0.5" aria-hidden="true">lock</span>
+                  <div>
+                    <div class="text-xs font-semibold text-[#080e1a]">Zero Cloud Footprint</div>
+                    <div class="text-[11px] text-[#636c7c]">Encrypted SQLite stored entirely on hardware</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2 p-2.5 rounded bg-[#f6f8fb] border border-[#e2e6ee]">
+                  <span class="material-symbols-outlined text-base text-[#080e1a] mt-0.5" aria-hidden="true">screen_rotation</span>
+                  <div>
+                    <div class="text-xs font-semibold text-[#080e1a]">Zero App-Opening</div>
+                    <div class="text-[11px] text-[#636c7c]">No requirement to launch full app daily</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2 p-2.5 rounded bg-[#f6f8fb] border border-[#e2e6ee]">
+                  <span class="material-symbols-outlined text-base text-[#080e1a] mt-0.5" aria-hidden="true">download</span>
+                  <div>
+                    <div class="text-xs font-semibold text-[#080e1a]">CSV / Database Export</div>
+                    <div class="text-[11px] text-[#636c7c]">Full user sovereignty over raw ledger data</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- CTA Action Bar -->
+              <div class="pt-4 flex flex-wrap items-center gap-4">
+                <a class="inline-flex items-center justify-center h-11 px-6 bg-[#080e1a] text-white text-xs font-mono font-medium rounded hover:bg-[#1a2333] transition-all shadow-sm gap-2" href="https://onetap.zerofrik.com" rel="noopener noreferrer" target="_blank" aria-label="Visit OneTap Site">
+                  <span>Visit OneTap Site</span>
+                  <span class="material-symbols-outlined text-sm" aria-hidden="true">north_east</span>
+                </a>
+                <div class="inline-flex items-center gap-2 px-3 py-2 border border-[#d6dbe6] bg-[#f8f9fb] rounded text-xs font-mono text-[#4b5362]">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+                  <span>v1.0.4 Android APK • 100% Offline</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right Column: Paired OLED Device Mockup Rendering -->
+            <div class="lg:col-span-5 flex justify-center items-center" aria-hidden="true">
+              <div class="relative w-full max-w-[320px] rounded-[40px] bg-[#0b0c0e] p-2.5 border-2 border-[#262832] shadow-2xl text-slate-100 font-sans">
+                <!-- Camera Punch Hole -->
+                <div class="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-4 bg-[#050506] rounded-full z-30"></div>
+                <!-- Internal Screen Mockup Frame -->
+                <div class="w-full bg-[#121316] rounded-[32px] overflow-hidden p-5 flex flex-col justify-between border border-[#20222a] relative">
+                  <!-- Screen Header -->
+                  <div class="flex items-center justify-between pt-3 pb-5 border-b border-[#23252c]">
+                    <div class="flex items-center gap-2.5">
+                      <div class="relative w-9 h-9 rounded-full border border-[#b88c42]/80 bg-[#161410] flex items-center justify-center shadow-inner">
+                        <span class="text-[#d8ab5c] font-serif text-sm font-bold">1</span>
+                      </div>
+                      <div>
+                        <div class="flex items-center gap-1">
+                          <span class="text-white text-sm font-bold tracking-tight">OneTap</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-[#d6a858]"></span>
+                        </div>
+                        <span class="text-[#b98e47] text-[9px] font-semibold tracking-widest uppercase block font-mono">OFFLINE VAULT</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#524122] bg-[#1c1813] text-[#d6a858] text-[10px] font-medium font-mono">
+                      <span class="material-symbols-outlined text-xs">lock</span>
+                      <span>100% Offline</span>
+                    </div>
+                  </div>
+                  <!-- Live Spend Summary Metric -->
+                  <div class="my-4">
+                    <p class="text-[#848790] text-xs font-normal">Today's spending</p>
+                    <h4 class="text-white text-3xl font-extrabold tracking-tight mt-0.5">₹506</h4>
+                  </div>
+                  <!-- Review Section -->
+                  <div class="mb-3">
+                    <div class="flex items-center justify-between pb-1 border-b border-[#1d1f26]">
+                      <span class="text-[#f1f3f7] text-xs font-semibold">Needs review</span>
+                      <span class="text-[10px] text-[#d8ab5c] font-mono">1 pending</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2 text-xs">
+                      <span class="text-[#f0f2f5] truncate max-w-[170px]">Raju Tea Stall &amp; Samosa</span>
+                      <span class="text-white font-bold font-mono">₹35</span>
+                    </div>
+                  </div>
+                  <!-- Recent Transactions -->
+                  <div class="mb-2">
+                    <div class="flex items-center justify-between pb-1 border-b border-[#1d1f26]">
+                      <span class="text-[#f1f3f7] text-xs font-semibold">Recent</span>
+                      <span class="text-[10px] text-[#848790] font-mono">Today</span>
+                    </div>
+                    <div class="space-y-2 pt-2">
+                      <div class="flex items-center justify-between text-[11px]">
+                        <span class="text-[#ededee] truncate max-w-[160px]">Split bill • Ramesh</span>
+                        <span class="text-emerald-400 font-bold font-mono">+₹150</span>
+                      </div>
+                      <div class="flex items-center justify-between text-[11px]">
+                        <span class="text-[#ededee] truncate max-w-[160px]">Indian Oil (Bike Fuel)</span>
+                        <span class="text-[#ededee] font-bold font-mono">-₹180</span>
+                      </div>
+                      <div class="flex items-center justify-between text-[11px]">
+                        <span class="text-[#ededee] truncate max-w-[160px]">Sharma Kirana Store</span>
+                        <span class="text-[#ededee] font-bold font-mono">-₹140</span>
+                      </div>
+                      <div class="flex items-center justify-between text-[11px]">
+                        <span class="text-[#ededee] truncate max-w-[160px]">Vegetable Market</span>
+                        <span class="text-[#ededee] font-bold font-mono">-₹85</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Bottom Floating Quick-Add & Navigation -->
+                  <div class="pt-3 flex items-center justify-between border-t border-[#1d1f26] mt-2">
+                    <span class="text-[#d8ab5c] text-xs font-mono">See all logs</span>
+                    <div class="w-8 h-8 rounded-full bg-[#f1ba4f] flex items-center justify-center text-[#141416] font-bold text-base shadow">
+                      +
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- PORTFOLIO ARCHITECTURE (Alternating Structured Section) -->
+    <section class="border-b border-[#d8dce6] bg-[#f7f9fc] py-20 md:py-28" id="portfolio" aria-labelledby="portfolio-heading">
+      <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-end">
+          <div class="lg:col-span-5">
+            <span class="text-xs font-mono tracking-wider text-[#586172] uppercase block mb-2 font-medium">Portfolio Architecture</span>
+            <h2 id="portfolio-heading" class="text-2xl sm:text-3xl font-semibold text-[#080e1a] tracking-tight">
+              One company. Many problems worth solving.
+            </h2>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-sm sm:text-base text-[#4f5666] leading-relaxed">
+              OneTap is just the beginning. ZeroFrik is built to repeatedly discover, build, and validate products across different markets. We don’t want to build products simply because they are technically possible. We build because people genuinely need better solutions.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Architectural Tree Structure -->
+        <div class="bg-[#ffffff] border border-[#d2d7e2] p-6 sm:p-10 rounded-xl shadow-sm relative">
+          <!-- Root node -->
+          <div class="flex flex-col items-center">
+            <div class="px-5 py-2.5 bg-[#080e1a] text-white border border-[#080e1a] text-xs font-mono rounded shadow-sm flex items-center gap-2">
+              <span class="w-2 h-2 bg-emerald-400 rounded-full" aria-hidden="true"></span>
+              <span>ZeroFrik Core Holding</span>
+            </div>
+            <div class="w-px h-8 bg-[#cfd5e2]" aria-hidden="true"></div>
+            <div class="w-3/4 max-w-2xl h-px bg-[#cfd5e2]" aria-hidden="true"></div>
+          </div>
+          
+          <!-- Branches / Leaves -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            <!-- Active Product -->
+            <div class="border border-[#080e1a] bg-[#ffffff] p-5 rounded relative flex flex-col justify-between shadow-sm">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[11px] font-mono font-semibold text-[#080e1a]">01 / LIVE</span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-100 text-emerald-800 font-semibold">Active Product</span>
+                </div>
+                <h3 class="text-base font-semibold text-[#080e1a] mb-1">OneTap</h3>
+                <p class="text-xs text-[#525968] leading-normal">Automated offline expense tracking via notification interception.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-[#edf0f5] text-[11px] font-mono text-[#586172]">
+                Status: Live Product (Android)
+              </div>
+            </div>
+            <!-- Candidate 1 -->
+            <div class="border border-dashed border-[#c4cbd8] bg-[#f8f9fc] p-5 rounded flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[11px] font-mono text-[#6c7688]">02 / CANDIDATE</span>
+                  <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#e9edf4] text-[#586172]">Validation</span>
+                </div>
+                <h3 class="text-base font-semibold text-[#252a33] mb-1">Healthcare Workflow</h3>
+                <p class="text-xs text-[#606878] leading-normal">Addressing patient-facing administrative latency and data silos.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-[#e2e6ee] text-[11px] font-mono text-[#788294]">
+                Status: Problem in Validation
+              </div>
+            </div>
+            <!-- Candidate 2 -->
+            <div class="border border-dashed border-[#c4cbd8] bg-[#f8f9fc] p-5 rounded flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[11px] font-mono text-[#6c7688]">03 / DISCOVERY</span>
+                  <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#e9edf4] text-[#586172]">Discovery</span>
+                </div>
+                <h3 class="text-base font-semibold text-[#252a33] mb-1">Productivity</h3>
+                <p class="text-xs text-[#606878] leading-normal">Asymmetric capture for solo operators and independent builders.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-[#e2e6ee] text-[11px] font-mono text-[#788294]">
+                Status: Problem in Discovery
+              </div>
+            </div>
+            <!-- Candidate 3 -->
+            <div class="border border-dashed border-[#c4cbd8] bg-[#f8f9fc] p-5 rounded flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[11px] font-mono text-[#6c7688]">04 / RESEARCH</span>
+                  <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#e9edf4] text-[#586172]">Research</span>
+                </div>
+                <h3 class="text-base font-semibold text-[#252a33] mb-1">Commerce Ops</h3>
+                <p class="text-xs text-[#606878] leading-normal">Micro-merchant inventory sync with offline resilience.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-[#e2e6ee] text-[11px] font-mono text-[#788294]">
+                Status: Problem in Research
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 pt-4 border-t border-[#edf0f5] text-center">
+            <span class="text-[11px] font-mono text-[#768092] uppercase tracking-widest">
+              Disciplined Portfolio Expansion • Understated Verification
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- WHAT WE BELIEVE (Structured Container Grid) -->
+    <section class="border-b border-[#d8dce6] bg-[#eef1f6] py-20 md:py-28" aria-labelledby="beliefs-heading">
+      <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-mono tracking-wider text-[#586172] uppercase block mb-2 font-medium">Foundations</span>
+          <h2 id="beliefs-heading" class="text-2xl sm:text-3xl font-semibold text-[#080e1a] tracking-tight">
+            What we believe
+          </h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Principle 1 -->
+          <div class="p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-[#586172] tracking-widest font-semibold">PRINCIPLE 01</span>
+              <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
+            </div>
+            <h3 class="text-lg font-semibold text-[#080e1a] mb-2 font-sans">Real problems first</h3>
+            <p class="text-sm text-[#4d5564] leading-relaxed">
+              Start with problems people actually experience. Avoid solutions manufactured in isolation looking for an arbitrary market fit.
+            </p>
+          </div>
+          <!-- Principle 2 -->
+          <div class="p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-[#586172] tracking-widest font-semibold">PRINCIPLE 02</span>
+              <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
+            </div>
+            <h3 class="text-lg font-semibold text-[#080e1a] mb-2 font-sans">Simple beats complicated</h3>
+            <p class="text-sm text-[#4d5564] leading-relaxed">
+              Build the smallest useful solution before adding complexity. Elegance is found in removal, not cumulative feature bloat.
+            </p>
+          </div>
+          <!-- Principle 3 -->
+          <div class="p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-[#586172] tracking-widest font-semibold">PRINCIPLE 03</span>
+              <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
+            </div>
+            <h3 class="text-lg font-semibold text-[#080e1a] mb-2 font-sans">Users decide</h3>
+            <p class="text-sm text-[#4d5564] leading-relaxed">
+              Real usage matters more than assumptions. Unsolicited user reliance is the only objective validator of software utility.
+            </p>
+          </div>
+          <!-- Principle 4 -->
+          <div class="p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-[#586172] tracking-widest font-semibold">PRINCIPLE 04</span>
+              <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
+            </div>
+            <h3 class="text-lg font-semibold text-[#080e1a] mb-2 font-sans">Earn the right to grow</h3>
+            <p class="text-sm text-[#4d5564] leading-relaxed">
+              Products earn more investment by proving that they create genuine value. We scale operations proportional to proven retention.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ABOUT ZEROFRIK (Crisp Surface Section) -->
+    <section class="border-b border-[#d8dce6] bg-[#fbfcfd] py-20 md:py-28" id="about" aria-labelledby="about-heading">
+      <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
+        <div class="max-w-3xl bg-[#ffffff] border border-[#d4d9e4] p-8 sm:p-12 rounded-xl shadow-sm">
+          <span class="text-xs font-mono tracking-wider text-[#586172] uppercase block mb-2 font-medium">Entity Overview</span>
+          <h2 id="about-heading" class="text-2xl sm:text-3xl font-semibold text-[#080e1a] tracking-tight mb-6">
+            Built to create useful products.
+          </h2>
+          <div class="space-y-4 text-sm sm:text-base text-[#474e5c] leading-relaxed">
+            <p>
+              ZeroFrik is an independent product company focused on building software products around real-world problems.
+            </p>
+            <p>
+              We are intentionally building a company where ideas are tested in the real world rather than being built purely on assumptions or synthetic consensus.
+            </p>
+          </div>
+          
+          <div class="mt-8 pt-6 border-t border-[#e2e6ee] flex flex-wrap items-center gap-8">
+            <div>
+              <div class="text-[11px] font-mono text-[#6c7688] uppercase">Structure</div>
+              <div class="text-sm font-semibold text-[#080e1a]">Independent Product Holding</div>
+            </div>
+            <div class="w-px h-8 bg-[#d8dce6] hidden sm:block" aria-hidden="true"></div>
+            <div>
+              <div class="text-[11px] font-mono text-[#6c7688] uppercase">Stewardship</div>
+              <div class="text-sm font-semibold text-[#080e1a]">Long-term Lifecycle Operator</div>
+            </div>
+            <div class="w-px h-8 bg-[#d8dce6] hidden sm:block" aria-hidden="true"></div>
+            <div>
+              <div class="text-[11px] font-mono text-[#6c7688] uppercase">Jurisdiction</div>
+              <div class="text-sm font-semibold text-[#080e1a]">Autonomous Operator</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FINAL CTA (Discourse Block) -->
+    <section class="border-b border-[#d8dce6] bg-[#f2f4f8] py-20 md:py-24" id="contact" aria-labelledby="contact-heading">
+      <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
+        <div class="max-w-2xl bg-[#ffffff] border border-[#cfd5e2] p-8 sm:p-10 rounded-xl shadow-sm">
+          <div class="inline-flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 bg-[#080e1a]" aria-hidden="true"></span>
+            <span class="text-xs font-mono uppercase tracking-wider text-[#555d6e] font-semibold">Direct Discourse</span>
+          </div>
+          <h2 id="contact-heading" class="text-2xl sm:text-3xl font-semibold text-[#080e1a] tracking-tight mb-3">
+            Have a problem worth solving?
+          </h2>
+          <p class="text-sm sm:text-base text-[#4f5666] mb-6 leading-relaxed">
+            We’re always interested in discovering problems that deserve a better, more respectful software solution.
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a class="inline-flex items-center justify-center h-10 px-6 bg-[#080e1a] text-white text-xs font-mono font-medium rounded hover:bg-[#1a2333] transition-all shadow-sm" href="mailto:contact@zerofrik.com">
+              Get in touch (contact@zerofrik.com)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- MINIMALIST INSTITUTIONAL FOOTER -->
+  <footer class="bg-[#ffffff] border-t border-[#d8dce6]" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8 pb-8 border-b border-[#e5e9f0]">
+        
+        <div class="md:col-span-6 space-y-3">
+          <div class="flex items-center gap-2.5">
+            <img alt="ZeroFrik Icon" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn8jfO75n062zxhP4X3i4qpTz2zvUsre7i-E7M8XoD1BB_UlbADvNDHDRgHy21pvQeIhEi-8MhF3ajcisJ-EPVYNum9c345PknysuwsCBbAlm6p3Z775lOjsPsjg6eDEy0JjmXpHrZ2xrVa2p5FB4s3K1BjjUscn1lB8Ph5CVx1RAgudrTdsk49633IKdEr2yRCZuvPqoO5fE_VFq5idX-cJtha42JTj4zMp7EbMq3FGnok6DyaZylzNnXwPGCreenHw" width="24" height="24" loading="lazy" decoding="async"/>
+            <span class="text-base font-bold uppercase tracking-tight text-[#080e1a]">ZeroFrik</span>
+          </div>
+          <p class="text-xs text-[#525968] max-w-sm leading-relaxed">
+            We build simple products that solve real problems.
+          </p>
+          <div class="pt-1">
+            <span class="text-xs font-mono text-[#747e90]">
+              OneTap is an active product by ZeroFrik.
+            </span>
+          </div>
+        </div>
+        
+        <div class="md:col-span-6 flex flex-wrap md:justify-end items-start gap-6 text-xs font-mono text-[#525968]">
+          <a class="hover:text-[#080e1a] transition-colors" href="#products">Products</a>
+          <a class="hover:text-[#080e1a] transition-colors" href="#approach">Approach</a>
+          <a class="hover:text-[#080e1a] transition-colors" href="#portfolio">Portfolio</a>
+          <a class="hover:text-[#080e1a] transition-colors" href="#about">About</a>
+          <a class="hover:text-[#080e1a] transition-colors" href="#contact">Contact</a>
+          <a class="hover:text-[#080e1a] transition-colors" href="https://onetap.zerofrik.com/privacy" rel="noopener noreferrer" target="_blank">Privacy</a>
+        </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-[#747e90]">
+        <p>© 2026 ZeroFrik. All rights reserved.</p>
+        <p>Built with discipline and focus.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
