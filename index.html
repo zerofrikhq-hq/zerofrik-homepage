@@ -895,13 +895,14 @@
         formData.append('email', email);
         formData.append('message', message);
 
-        const response = await fetch(WEBHOOK_URL, {
+        // Fire and forget - don't await the response to keep UI snappy
+        fetch(WEBHOOK_URL, {
           method: 'POST',
           body: formData,
-          mode: 'no-cors' // Google Sheets web apps usually require no-cors if not returning proper headers
-        });
+          mode: 'no-cors'
+        }).catch(err => console.error('Background fetch error:', err));
         
-        // Since no-cors doesn't allow reading response, we assume success if fetch didn't throw
+        // Optimistically assume success immediately
         statusEl.textContent = 'Message sent successfully!';
         statusEl.className = 'text-xs text-center font-mono mt-3 py-2 rounded bg-emerald-50 text-emerald-700 border border-emerald-200';
         statusEl.classList.remove('hidden');
@@ -909,7 +910,7 @@
         
         setTimeout(() => {
           closeContactModal();
-        }, 2000);
+        }, 1500);
         
       } catch (error) {
         console.error('Error submitting form:', error);
