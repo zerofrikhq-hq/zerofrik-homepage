@@ -168,11 +168,7 @@
       
       <!-- Trailing Action -->
       <div class="flex items-center gap-3">
-        <div class="hidden sm:flex items-center gap-1 px-2 py-0.5 border border-[#d2d7e2] bg-[#f2f4f8] rounded text-[11px] font-mono text-[#535967]" role="status" aria-live="polite">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" aria-hidden="true"></span>
-          <span>SYS // OPERATIONAL</span>
-        </div>
-        <a class="inline-flex items-center justify-center h-9 px-4 text-xs font-mono font-medium border border-[#cfd4df] bg-[#ffffff] text-[#080e1a] hover:border-[#080e1a] hover:bg-[#f8f9fc] transition-all rounded shadow-sm" href="#contact">
+        <a class="inline-flex items-center justify-center h-9 px-4 text-xs font-mono font-medium border border-[#cfd4df] bg-[#ffffff] text-[#080e1a] hover:border-[#080e1a] hover:bg-[#f8f9fc] transition-all rounded shadow-sm cursor-pointer" onclick="openContactModal(event)">
           Contact
         </a>
       </div>
@@ -187,9 +183,7 @@
       <!-- Faint Technical Grid Background -->
       <div class="absolute inset-0 pointer-events-none grid-blueprint opacity-85 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_40%,#000_50%,transparent_100%)]" aria-hidden="true"></div>
       
-      <!-- Structural Hairline Crosshair Markers -->
-      <div class="absolute top-4 left-6 text-[11px] font-mono text-[#a5adbb] select-none pointer-events-none" aria-hidden="true">+ ZF-001/ENG</div>
-      <div class="absolute top-4 right-6 text-[11px] font-mono text-[#a5adbb] select-none pointer-events-none" aria-hidden="true">+ LAT: 28.6139° N</div>
+
       
       <!-- Soft Ambient Radial Glow -->
       <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] bg-gradient-to-tr from-slate-300/35 via-[#e2e7f3]/40 to-transparent rounded-full blur-3xl pointer-events-none -z-10" aria-hidden="true"></div>
@@ -782,8 +776,8 @@
             We’re always interested in discovering problems that deserve a better, more respectful software solution.
           </p>
           <div class="flex flex-wrap items-center gap-3">
-            <a class="inline-flex items-center justify-center h-10 px-6 bg-[#080e1a] text-white text-xs font-mono font-medium rounded hover:bg-[#1a2333] transition-all shadow-sm" href="mailto:contact@zerofrik.com">
-              Get in touch (contact@zerofrik.com)
+            <a class="inline-flex items-center justify-center h-10 px-6 bg-[#080e1a] text-white text-xs font-mono font-medium rounded hover:bg-[#1a2333] transition-all shadow-sm cursor-pointer" onclick="openContactModal(event)">
+              Contact Us
             </a>
           </div>
         </div>
@@ -817,7 +811,7 @@
           <a class="hover:text-[#080e1a] transition-colors" href="#approach">Approach</a>
           <a class="hover:text-[#080e1a] transition-colors" href="#portfolio">Portfolio</a>
           <a class="hover:text-[#080e1a] transition-colors" href="#about">About</a>
-          <a class="hover:text-[#080e1a] transition-colors" href="#contact">Contact</a>
+          <a class="hover:text-[#080e1a] transition-colors cursor-pointer" onclick="openContactModal(event)">Contact</a>
           <a class="hover:text-[#080e1a] transition-colors" href="https://onetap.zerofrik.com/privacy" rel="noopener noreferrer" target="_blank">Privacy</a>
         </div>
       </div>
@@ -828,5 +822,108 @@
       </div>
     </div>
   </footer>
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-[#080e1a]/60 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeContactModal()"></div>
+    
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden border border-[#d6dbe6] transform transition-all">
+      <div class="px-6 py-5 border-b border-[#e5e9f0] flex items-center justify-between bg-[#fbfcfd]">
+        <h3 class="text-lg font-semibold text-[#080e1a]" id="modal-title">Contact Us</h3>
+        <button type="button" class="text-[#747e90] hover:text-[#080e1a] transition-colors rounded-full p-1 hover:bg-[#eef1f6]" onclick="closeContactModal()">
+          <span class="material-symbols-outlined text-xl" aria-hidden="true">close</span>
+        </button>
+      </div>
+      
+      <form id="contact-form" class="px-6 py-6 space-y-4">
+        <div>
+          <label for="contact-email" class="block text-xs font-mono font-medium text-[#4a5160] mb-1.5 uppercase tracking-wider">Email Address</label>
+          <input type="email" id="contact-email" name="email" required class="block w-full rounded-md border-[#cfd4df] shadow-sm focus:border-[#080e1a] focus:ring-[#080e1a] sm:text-sm px-3 py-2 text-[#080e1a] bg-[#f8f9fc] placeholder-[#a5adbb]" placeholder="you@example.com">
+        </div>
+        <div>
+          <label for="contact-body" class="block text-xs font-mono font-medium text-[#4a5160] mb-1.5 uppercase tracking-wider">Message</label>
+          <textarea id="contact-body" name="message" rows="4" required class="block w-full rounded-md border-[#cfd4df] shadow-sm focus:border-[#080e1a] focus:ring-[#080e1a] sm:text-sm px-3 py-2 text-[#080e1a] bg-[#f8f9fc] placeholder-[#a5adbb]" placeholder="How can we help you?"></textarea>
+        </div>
+        <div class="pt-2">
+          <button type="submit" id="contact-submit" class="w-full inline-flex items-center justify-center h-10 px-4 text-sm font-mono font-medium bg-[#080e1a] text-white hover:bg-[#1a2333] transition-all rounded shadow-sm">
+            Send Message
+          </button>
+        </div>
+        <div id="contact-status" class="hidden text-xs text-center font-mono mt-2 py-1.5 rounded"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openContactModal(e) {
+      if (e) e.preventDefault();
+      document.getElementById('contact-modal').classList.remove('hidden');
+      document.getElementById('contact-email').focus();
+    }
+    
+    function closeContactModal() {
+      document.getElementById('contact-modal').classList.add('hidden');
+      document.getElementById('contact-form').reset();
+      const statusEl = document.getElementById('contact-status');
+      statusEl.classList.add('hidden');
+      statusEl.textContent = '';
+      statusEl.className = 'hidden text-xs text-center font-mono mt-2 py-1.5 rounded';
+    }
+
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('contact-submit');
+      const statusEl = document.getElementById('contact-status');
+      const email = document.getElementById('contact-email').value;
+      const message = document.getElementById('contact-body').value;
+      
+      // Setup UI for submission
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.classList.add('opacity-70');
+      statusEl.classList.add('hidden');
+      
+      // User will provide the Google Sheet Web App URL here
+      const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw3V4ZcGXQQSsza3Q8Npd8CwKawwTWMYlqIKhiO3lnpSQgm-uAiA6BxZFNdF1htJPep/exec';
+      
+      try {
+        if (WEBHOOK_URL === 'INSERT_GOOGLE_SHEET_URL_HERE') {
+          throw new Error('Please configure the Google Sheet URL first.');
+        }
+
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('message', message);
+
+        const response = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors' // Google Sheets web apps usually require no-cors if not returning proper headers
+        });
+        
+        // Since no-cors doesn't allow reading response, we assume success if fetch didn't throw
+        statusEl.textContent = 'Message sent successfully!';
+        statusEl.className = 'text-xs text-center font-mono mt-3 py-2 rounded bg-emerald-50 text-emerald-700 border border-emerald-200';
+        statusEl.classList.remove('hidden');
+        document.getElementById('contact-form').reset();
+        
+        setTimeout(() => {
+          closeContactModal();
+        }, 2000);
+        
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        statusEl.textContent = error.message === 'Please configure the Google Sheet URL first.' 
+            ? 'Error: Please add the Google Sheet URL.' 
+            : 'Error sending message. Please try again.';
+        statusEl.className = 'text-xs text-center font-mono mt-3 py-2 rounded bg-red-50 text-red-700 border border-red-200';
+        statusEl.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        submitBtn.classList.remove('opacity-70');
+      }
+    });
+  </script>
 </body>
 </html>
