@@ -121,6 +121,25 @@
 
   <style>
     /* Critical CSS Inline */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html {
+      overflow-x: clip;
+      scroll-padding-top: 5rem;
+    }
+    body {
+      overflow-x: clip;
+    }
+    main > section[id] {
+      scroll-margin-top: 4rem;
+    }
+    img, svg {
+      max-width: 100%;
+    }
+    h1, h2, h3, p, a, span {
+      overflow-wrap: break-word;
+    }
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       display: inline-block;
@@ -148,20 +167,139 @@
     .material-symbols-outlined:not(:empty) {
       visibility: visible;
     }
+
+    /* Mobile resilience: keep dense labels, cards and mockups inside the viewport. */
+    @media (max-width: 639px) {
+      .site-header-inner {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+      }
+      .header-contact {
+        min-height: 2.5rem;
+      }
+      .hero-identity-badge,
+      .services-identity-badge {
+        max-width: 100%;
+        flex-wrap: wrap;
+        row-gap: 0.125rem;
+      }
+      .hero-title {
+        font-size: clamp(2rem, 10vw, 2.5rem);
+      }
+      .mobile-section {
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+      }
+      .mobile-card {
+        padding: 1.25rem !important;
+      }
+      .mobile-section-heading {
+        margin-bottom: 2rem !important;
+      }
+      .product-brand-copy,
+      .product-brand-line,
+      .device-brand,
+      .device-copy {
+        min-width: 0;
+      }
+      .product-brand-line,
+      .product-actions,
+      .portfolio-card-meta {
+        flex-wrap: wrap;
+      }
+      .product-status {
+        max-width: 100%;
+        white-space: normal;
+      }
+      .device-row-label {
+        min-width: 0;
+      }
+      .about-stats {
+        align-items: flex-start;
+        gap: 1.25rem;
+      }
+      .mobile-modal {
+        padding-top: max(1rem, env(safe-area-inset-top));
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+      }
+      .mobile-modal-panel {
+        max-height: calc(100dvh - 2rem);
+      }
+      .mobile-modal-header,
+      .mobile-modal-form {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+      .mobile-modal-close {
+        width: 2.5rem;
+        height: 2.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+      }
+    }
+
+    @media (max-width: 359px) {
+      .site-brand {
+        gap: 0.5rem !important;
+      }
+      .site-brand-tagline {
+        display: none;
+      }
+      .header-contact {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+      }
+      .hero-actions > a {
+        width: 100%;
+      }
+      .pipeline-label {
+        align-items: flex-start !important;
+        gap: 0.75rem;
+      }
+      .pipeline-label > span:last-child {
+        text-align: right;
+      }
+      .product-brand {
+        align-items: flex-start !important;
+        flex-direction: column;
+        gap: 0.75rem !important;
+      }
+      .product-brand-copy {
+        width: 100%;
+      }
+      .device-screen {
+        padding: 0.75rem !important;
+      }
+      .device-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .device-lock-pill {
+        margin-left: auto;
+      }
+      .portfolio-root-node {
+        width: 100%;
+        justify-content: center;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-[#f5f6f9] text-[#121720] antialiased selection:bg-primary-container selection:text-white font-sans min-h-screen">
   
   <!-- TOP NAVIGATION -->
   <header class="docked full-width top-0 sticky z-50 bg-[#ffffff]/90 backdrop-blur-md border-b border-[#dce1ea]" role="banner">
-    <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter flex items-center justify-between h-16 w-full">
+    <div class="site-header-inner max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter flex items-center justify-between h-16 w-full">
       
       <!-- Brand Logo -->
-      <a class="flex items-center gap-2.5 group" href="/" aria-label="ZeroFrik Homepage">
+      <a class="site-brand flex items-center gap-2.5 group min-w-0" href="/" aria-label="ZeroFrik Homepage">
         <img alt="ZeroFrik Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4llE_V8EQt35u5RE7dGzoDaLVb8lqWxIfjGh1ZwuXBb2cQSQ4AfmZRjDxq8OOvnODce6geJQ1yaJpCJ5xvp-Gz7WIhxr-pgF7PlxVgTZbUgMg5DSPejd6qHF9KDcf72S_4E5SgiWcFYnmRKwx2eXENeWWT0uPqqcRvPnNPdteDcDEqrlz5VelMVLOvFnM1a8YobhCgN1rCMQtV4WkHWsYweEVOjoisCgmJ8jykeEWNx7lkXP6BjdMZlqrZ_3kKo21HQ" width="32" height="32" fetchpriority="high" decoding="sync"/>
         <div class="flex flex-col">
           <span class="font-bold tracking-tight text-[#080e1a] text-lg leading-none font-sans uppercase">ZeroFrik</span>
-          <span class="text-[9px] font-mono tracking-wider text-[#6e7787] uppercase leading-tight mt-0.5">Software • Zero Friction</span>
+          <span class="site-brand-tagline text-[9px] font-mono tracking-wider text-[#6e7787] uppercase leading-tight mt-0.5">Software • Zero Friction</span>
         </div>
       </a>
       
@@ -178,7 +316,7 @@
       
       <!-- Trailing Action -->
       <div class="flex items-center gap-3">
-        <a class="inline-flex items-center justify-center h-9 px-4 text-xs font-mono font-medium border border-[#cfd4df] bg-[#ffffff] text-[#080e1a] hover:border-[#080e1a] hover:bg-[#f8f9fc] transition-all rounded shadow-sm cursor-pointer" onclick="openContactModal(event)">
+        <a class="header-contact inline-flex items-center justify-center h-9 px-4 text-xs font-mono font-medium border border-[#cfd4df] bg-[#ffffff] text-[#080e1a] hover:border-[#080e1a] hover:bg-[#f8f9fc] transition-all rounded shadow-sm cursor-pointer" onclick="openContactModal(event)">
           Contact
         </a>
       </div>
@@ -188,7 +326,7 @@
   <main class="relative" id="main-content">
     
     <!-- HERO SECTION -->
-    <section class="relative overflow-hidden border-b border-[#d8dce6] bg-[#f7f8fb] pt-16 pb-20 md:pt-24 md:pb-28" aria-labelledby="hero-heading">
+    <section class="mobile-section relative overflow-hidden border-b border-[#d8dce6] bg-[#f7f8fb] pt-16 pb-20 md:pt-24 md:pb-28" aria-labelledby="hero-heading">
       
       <!-- Faint Technical Grid Background -->
       <div class="absolute inset-0 pointer-events-none grid-blueprint opacity-85 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_40%,#000_50%,transparent_100%)]" aria-hidden="true"></div>
@@ -207,14 +345,14 @@
         <div class="max-w-3xl">
           
           <!-- Sub-badge indicator -->
-          <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-[#cfd5e2] bg-[#ffffff]/90 backdrop-blur-sm rounded text-[11px] font-mono text-[#444a56] shadow-sm" aria-label="Company Identity Badge">
+          <div class="hero-identity-badge inline-flex items-center gap-2 px-3 py-1 mb-6 border border-[#cfd5e2] bg-[#ffffff]/90 backdrop-blur-sm rounded text-[11px] font-mono text-[#444a56] shadow-sm" aria-label="Company Identity Badge">
             <span class="w-2 h-2 bg-[#080e1a] rounded-none" aria-hidden="true"></span>
             <span class="tracking-wider uppercase font-semibold">Independent Product Company</span>
             <span class="text-[#9ea6b5]" aria-hidden="true">/</span>
             <span class="text-[#646e7f]">Discipline-Led</span>
           </div>
           
-          <h1 id="hero-heading" class="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[#080e1a] mb-6 leading-[1.08]">
+          <h1 id="hero-heading" class="hero-title text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[#080e1a] mb-6 leading-[1.08]">
             We build simple products that solve real problems.
           </h1>
           <p class="text-base sm:text-lg md:text-xl text-[#4a5160] max-w-2xl mb-10 leading-relaxed font-normal">
@@ -222,7 +360,7 @@
           </p>
           
           <!-- CTA Cluster -->
-          <div class="flex flex-wrap items-center gap-3">
+          <div class="hero-actions flex flex-wrap items-center gap-3">
             <a class="inline-flex items-center justify-center h-11 px-6 bg-[#080e1a] text-white text-xs font-mono font-medium rounded hover:bg-[#1a2333] transition-all shadow-sm gap-2" href="#products">
               <span>Explore our products</span>
               <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_downward</span>
@@ -235,7 +373,7 @@
         
         <!-- Architectural Methodology Pipeline -->
         <div class="mt-16 pt-8 border-t border-[#d8dce6] relative">
-          <div class="flex items-center justify-between text-[11px] font-mono text-[#747e90] mb-4 tracking-wider uppercase">
+          <div class="pipeline-label flex items-center justify-between text-[11px] font-mono text-[#747e90] mb-4 tracking-wider uppercase">
             <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-[#747e90]" aria-hidden="true"></span> Methodology Pipeline</span>
             <span>Stage 01 — 04</span>
           </div>
@@ -275,9 +413,9 @@
     </section>
     
     <!-- EDITORIAL STANCE (Recessed Structural Section) -->
-    <section class="border-b border-[#d8dce6] bg-[#eef1f6] py-16 md:py-20 relative" aria-labelledby="stance-heading">
+    <section class="mobile-section border-b border-[#d8dce6] bg-[#eef1f6] py-16 md:py-20 relative" aria-labelledby="stance-heading">
       <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
-        <div class="bg-[#ffffff] border border-[#d0d6e2] rounded-xl p-8 md:p-12 shadow-sm relative overflow-hidden">
+        <div class="mobile-card bg-[#ffffff] border border-[#d0d6e2] rounded-xl p-8 md:p-12 shadow-sm relative overflow-hidden">
           
           <!-- Structural corner notation -->
           <div class="flex items-center justify-between border-b border-[#e5e9f0] pb-4 mb-8">
@@ -310,9 +448,9 @@
     </section>
     
     <!-- OUR APPROACH (Crisp Surface Section) -->
-    <section class="border-b border-[#d8dce6] bg-[#fbfcfd] py-20 md:py-28" id="approach" aria-labelledby="approach-heading">
+    <section class="mobile-section border-b border-[#d8dce6] bg-[#fbfcfd] py-20 md:py-28" id="approach" aria-labelledby="approach-heading">
       <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 pb-6 border-b border-[#e1e5ee]">
+        <div class="mobile-section-heading flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 pb-6 border-b border-[#e1e5ee]">
           <div>
             <div class="inline-flex items-center gap-2 mb-2">
               <span class="w-1.5 h-1.5 bg-[#404756] rounded-none" aria-hidden="true"></span>
@@ -401,7 +539,7 @@
     </section>
     
     <!-- RESTORED FLAGSHIP SHOWCASE: OneTap -->
-    <section class="border-b border-[#d8dce6] bg-[#eef1f6] py-20 md:py-28 relative overflow-hidden" id="products" aria-labelledby="products-heading">
+    <section class="mobile-section border-b border-[#d8dce6] bg-[#eef1f6] py-20 md:py-28 relative overflow-hidden" id="products" aria-labelledby="products-heading">
       <!-- Faint grid background for technical depth -->
       <div class="absolute inset-0 pointer-events-none grid-blueprint-dense opacity-60" aria-hidden="true"></div>
       
@@ -415,20 +553,20 @@
         </div>
         
         <!-- Unified High-Impact Single Flagship Card -->
-        <div class="bg-[#ffffff] border border-[#cfd6e2] rounded-2xl p-6 sm:p-10 lg:p-12 shadow-md relative overflow-hidden">
+        <div class="mobile-card bg-[#ffffff] border border-[#cfd6e2] rounded-2xl p-6 sm:p-10 lg:p-12 shadow-md relative overflow-hidden">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
             <!-- Left Column: Value Prop & Specs -->
             <div class="lg:col-span-7 space-y-6">
               
               <!-- 1Tap Brand Header -->
-              <div class="flex items-center gap-4">
+              <div class="product-brand flex items-center gap-4">
                 <div class="relative w-14 h-14 rounded-full border border-[#b88c42] bg-[#161410] flex items-center justify-center shadow-md flex-shrink-0" aria-hidden="true">
                   <div class="absolute inset-1 rounded-full border border-dashed border-[#b88c42]/50"></div>
                   <span class="text-[#d8ab5c] font-serif text-2xl font-bold tracking-tighter">1</span>
                 </div>
-                <div>
-                  <div class="flex items-center gap-2">
+                <div class="product-brand-copy">
+                  <div class="product-brand-line flex items-center gap-2">
                     <h2 id="products-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-[#080e1a]">1Tap</h2>
                     <span class="w-2 h-2 rounded-full bg-[#d6a858]" aria-hidden="true"></span>
                     <span class="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#f3ece0] text-[#916b25] border border-[#dfcca7]">ON-DEVICE PRIVACY</span>
@@ -480,12 +618,12 @@
               </div>
               
               <!-- CTA Action Bar -->
-              <div class="pt-4 flex flex-wrap items-center gap-4">
+              <div class="product-actions pt-4 flex flex-wrap items-center gap-4">
                 <a class="inline-flex items-center justify-center h-11 px-6 bg-[#080e1a] text-white text-xs font-mono font-medium rounded hover:bg-[#1a2333] transition-all shadow-sm gap-2" href="https://1tap.zerofrik.com/" rel="noopener noreferrer" target="_blank" aria-label="Visit 1Tap Site">
                   <span>Visit 1Tap Site</span>
                   <span class="material-symbols-outlined text-sm" aria-hidden="true">north_east</span>
                 </a>
-                <div class="inline-flex items-center gap-2 px-3 py-2 border border-[#d6dbe6] bg-[#f8f9fb] rounded text-xs font-mono text-[#4b5362]">
+                <div class="product-status inline-flex items-center gap-2 px-3 py-2 border border-[#d6dbe6] bg-[#f8f9fb] rounded text-xs font-mono text-[#4b5362]">
                   <span class="w-2 h-2 rounded-full bg-amber-500" aria-hidden="true"></span>
                   <span>Android Closed Testing • Transaction Data Stays On Device</span>
                 </div>
@@ -498,14 +636,14 @@
                 <!-- Camera Punch Hole -->
                 <div class="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-4 bg-[#050506] rounded-full z-30"></div>
                 <!-- Internal Screen Mockup Frame -->
-                <div class="w-full bg-[#121316] rounded-[32px] overflow-hidden p-5 flex flex-col justify-between border border-[#20222a] relative">
+                <div class="device-screen w-full bg-[#121316] rounded-[32px] overflow-hidden p-5 flex flex-col justify-between border border-[#20222a] relative">
                   <!-- Screen Header -->
-                  <div class="flex items-center justify-between pt-3 pb-5 border-b border-[#23252c]">
-                    <div class="flex items-center gap-2.5">
+                  <div class="device-header flex items-center justify-between pt-3 pb-5 border-b border-[#23252c]">
+                    <div class="device-brand flex items-center gap-2.5">
                       <div class="relative w-9 h-9 rounded-full border border-[#b88c42]/80 bg-[#161410] flex items-center justify-center shadow-inner">
                         <span class="text-[#d8ab5c] font-serif text-sm font-bold">1</span>
                       </div>
-                      <div>
+                      <div class="device-copy">
                         <div class="flex items-center gap-1">
                           <span class="text-white text-sm font-bold tracking-tight">1Tap</span>
                           <span class="w-1.5 h-1.5 rounded-full bg-[#d6a858]"></span>
@@ -513,7 +651,7 @@
                         <span class="text-[#b98e47] text-[9px] font-semibold tracking-widest uppercase block font-mono">LOCAL VAULT</span>
                       </div>
                     </div>
-                    <div class="flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#524122] bg-[#1c1813] text-[#d6a858] text-[10px] font-medium font-mono">
+                    <div class="device-lock-pill flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#524122] bg-[#1c1813] text-[#d6a858] text-[10px] font-medium font-mono">
                       <span class="material-symbols-outlined text-xs">lock</span>
                       <span>On-Device</span>
                     </div>
@@ -530,7 +668,7 @@
                       <span class="text-[10px] text-[#d8ab5c] font-mono">1 pending</span>
                     </div>
                     <div class="flex items-center justify-between py-2 text-xs">
-                      <span class="text-[#f0f2f5] truncate max-w-[170px]">Raju Tea Stall &amp; Samosa</span>
+                      <span class="device-row-label text-[#f0f2f5] truncate max-w-[170px]">Raju Tea Stall &amp; Samosa</span>
                       <span class="text-white font-bold font-mono">₹35</span>
                     </div>
                   </div>
@@ -542,19 +680,19 @@
                     </div>
                     <div class="space-y-2 pt-2">
                       <div class="flex items-center justify-between text-[11px]">
-                        <span class="text-[#ededee] truncate max-w-[160px]">Split bill • Ramesh</span>
+                        <span class="device-row-label text-[#ededee] truncate max-w-[160px]">Split bill • Ramesh</span>
                         <span class="text-emerald-400 font-bold font-mono">+₹150</span>
                       </div>
                       <div class="flex items-center justify-between text-[11px]">
-                        <span class="text-[#ededee] truncate max-w-[160px]">Indian Oil (Bike Fuel)</span>
+                        <span class="device-row-label text-[#ededee] truncate max-w-[160px]">Indian Oil (Bike Fuel)</span>
                         <span class="text-[#ededee] font-bold font-mono">-₹180</span>
                       </div>
                       <div class="flex items-center justify-between text-[11px]">
-                        <span class="text-[#ededee] truncate max-w-[160px]">Sharma Kirana Store</span>
+                        <span class="device-row-label text-[#ededee] truncate max-w-[160px]">Sharma Kirana Store</span>
                         <span class="text-[#ededee] font-bold font-mono">-₹140</span>
                       </div>
                       <div class="flex items-center justify-between text-[11px]">
-                        <span class="text-[#ededee] truncate max-w-[160px]">Vegetable Market</span>
+                        <span class="device-row-label text-[#ededee] truncate max-w-[160px]">Vegetable Market</span>
                         <span class="text-[#ededee] font-bold font-mono">-₹85</span>
                       </div>
                     </div>
@@ -576,12 +714,12 @@
     </section>
     
     <!-- SERVICES & CUSTOM ENGINEERING -->
-    <section class="border-b border-[#d8dce6] bg-[#fbfcfd] py-20 md:py-28" id="services" aria-labelledby="services-heading">
+    <section class="mobile-section border-b border-[#d8dce6] bg-[#fbfcfd] py-20 md:py-28" id="services" aria-labelledby="services-heading">
       <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
         
         <!-- Header -->
-        <div class="max-w-3xl mb-12">
-          <div class="inline-flex items-center gap-2 mb-3 px-3 py-1 border border-[#cfd5e2] bg-[#ffffff] rounded text-[11px] font-mono text-[#444a56] shadow-sm">
+        <div class="mobile-section-heading max-w-3xl mb-12">
+          <div class="services-identity-badge inline-flex items-center gap-2 mb-3 px-3 py-1 border border-[#cfd5e2] bg-[#ffffff] rounded text-[11px] font-mono text-[#444a56] shadow-sm">
             <span class="w-1.5 h-1.5 bg-[#080e1a] rounded-none" aria-hidden="true"></span>
             <span class="tracking-wider uppercase font-semibold">Custom Engineering</span>
             <span class="text-[#9ea6b5]" aria-hidden="true">/</span>
@@ -600,7 +738,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <!-- Card 1: E-commerce Development -->
-          <div class="bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'E-commerce Development')">
+          <div class="mobile-card bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'E-commerce Development')">
             <div>
               <div class="w-10 h-10 rounded border border-[#e0e4ed] bg-[#f8f9fc] flex items-center justify-center text-[#080e1a] mb-5 group-hover:border-[#080e1a] group-hover:bg-[#080e1a] group-hover:text-white transition-all">
                 <span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>
@@ -619,7 +757,7 @@
           </div>
           
           <!-- Card 2: Custom Plugins & Apps -->
-          <div class="bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'Custom Plugins & Apps')">
+          <div class="mobile-card bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'Custom Plugins & Apps')">
             <div>
               <div class="w-10 h-10 rounded border border-[#e0e4ed] bg-[#f8f9fc] flex items-center justify-center text-[#080e1a] mb-5 group-hover:border-[#080e1a] group-hover:bg-[#080e1a] group-hover:text-white transition-all">
                 <span class="material-symbols-outlined text-xl" aria-hidden="true">extension</span>
@@ -638,7 +776,7 @@
           </div>
           
           <!-- Card 3: API & System Integrations -->
-          <div class="bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'API & System Integrations')">
+          <div class="mobile-card bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'API & System Integrations')">
             <div>
               <div class="w-10 h-10 rounded border border-[#e0e4ed] bg-[#f8f9fc] flex items-center justify-center text-[#080e1a] mb-5 group-hover:border-[#080e1a] group-hover:bg-[#080e1a] group-hover:text-white transition-all">
                 <span class="material-symbols-outlined text-xl" aria-hidden="true">hub</span>
@@ -657,7 +795,7 @@
           </div>
           
           <!-- Card 4: Payments & Checkout -->
-          <div class="bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'Payments & Checkout')">
+          <div class="mobile-card bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'Payments & Checkout')">
             <div>
               <div class="w-10 h-10 rounded border border-[#e0e4ed] bg-[#f8f9fc] flex items-center justify-center text-[#080e1a] mb-5 group-hover:border-[#080e1a] group-hover:bg-[#080e1a] group-hover:text-white transition-all">
                 <span class="material-symbols-outlined text-xl" aria-hidden="true">credit_card</span>
@@ -676,7 +814,7 @@
           </div>
           
           <!-- Card 5: Performance & Problem Solving -->
-          <div class="bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'Performance & Problem Solving')">
+          <div class="mobile-card bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'Performance & Problem Solving')">
             <div>
               <div class="w-10 h-10 rounded border border-[#e0e4ed] bg-[#f8f9fc] flex items-center justify-center text-[#080e1a] mb-5 group-hover:border-[#080e1a] group-hover:bg-[#080e1a] group-hover:text-white transition-all">
                 <span class="material-symbols-outlined text-xl" aria-hidden="true">speed</span>
@@ -695,7 +833,7 @@
           </div>
           
           <!-- Card 6: Websites & Custom Web Applications -->
-          <div class="bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'Websites & Custom Web Applications')">
+          <div class="mobile-card bg-[#ffffff] border border-[#d6dbe6] p-7 rounded-lg shadow-sm hover:border-[#9ea8bb] hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer" onclick="openProjectModal(event, 'Websites & Custom Web Applications')">
             <div>
               <div class="w-10 h-10 rounded border border-[#e0e4ed] bg-[#f8f9fc] flex items-center justify-center text-[#080e1a] mb-5 group-hover:border-[#080e1a] group-hover:bg-[#080e1a] group-hover:text-white transition-all">
                 <span class="material-symbols-outlined text-xl" aria-hidden="true">dashboard</span>
@@ -716,7 +854,7 @@
         </div>
         
         <!-- Visually Stronger CTA Section -->
-        <div class="mt-12 bg-[#080e1a] text-white border border-[#1a2333] rounded-xl p-8 sm:p-12 shadow-md relative overflow-hidden">
+        <div class="mobile-card mt-12 bg-[#080e1a] text-white border border-[#1a2333] rounded-xl p-8 sm:p-12 shadow-md relative overflow-hidden">
           <!-- Subtle Blueprint Overlay -->
           <div class="absolute inset-0 pointer-events-none opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" aria-hidden="true"></div>
           
@@ -746,9 +884,9 @@
     </section>
     
     <!-- PORTFOLIO ARCHITECTURE (Alternating Structured Section) -->
-    <section class="border-b border-[#d8dce6] bg-[#f7f9fc] py-20 md:py-28" id="portfolio" aria-labelledby="portfolio-heading">
+    <section class="mobile-section border-b border-[#d8dce6] bg-[#f7f9fc] py-20 md:py-28" id="portfolio" aria-labelledby="portfolio-heading">
       <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-end">
+        <div class="mobile-section-heading grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-end">
           <div class="lg:col-span-5">
             <span class="text-xs font-mono tracking-wider text-[#586172] uppercase block mb-2 font-medium">Portfolio Architecture</span>
             <h2 id="portfolio-heading" class="text-2xl sm:text-3xl font-semibold text-[#080e1a] tracking-tight">
@@ -763,10 +901,10 @@
         </div>
         
         <!-- Architectural Tree Structure -->
-        <div class="bg-[#ffffff] border border-[#d2d7e2] p-6 sm:p-10 rounded-xl shadow-sm relative">
+        <div class="mobile-card bg-[#ffffff] border border-[#d2d7e2] p-6 sm:p-10 rounded-xl shadow-sm relative">
           <!-- Root node -->
           <div class="flex flex-col items-center">
-            <div class="px-5 py-2.5 bg-[#080e1a] text-white border border-[#080e1a] text-xs font-mono rounded shadow-sm flex items-center gap-2">
+            <div class="portfolio-root-node px-5 py-2.5 bg-[#080e1a] text-white border border-[#080e1a] text-xs font-mono rounded shadow-sm flex items-center gap-2">
               <span class="w-2 h-2 bg-emerald-400 rounded-full" aria-hidden="true"></span>
               <span>ZeroFrik Core Holding</span>
             </div>
@@ -779,7 +917,7 @@
             <!-- Active Product -->
             <div class="border border-[#080e1a] bg-[#ffffff] p-5 rounded relative flex flex-col justify-between shadow-sm">
               <div>
-                <div class="flex items-center justify-between mb-3">
+                <div class="portfolio-card-meta flex items-center justify-between gap-2 mb-3">
                   <span class="text-[11px] font-mono font-semibold text-[#080e1a]">01 / CLOSED TEST</span>
                   <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-amber-100 text-amber-800 font-semibold">Closed Testing</span>
                 </div>
@@ -793,7 +931,7 @@
             <!-- Candidate 1: ZeroFrik Maintenance Safety -->
             <div class="border border-dashed border-[#080e1a]/30 bg-[#f8f9fc] p-5 rounded flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between mb-3">
+                <div class="portfolio-card-meta flex items-center justify-between gap-2 mb-3">
                   <span class="text-[11px] font-mono text-[#080e1a] font-semibold">02 / NEXT PROJECT</span>
                   <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#e0e8f6] text-[#1b3a6b] font-medium">Under Review</span>
                 </div>
@@ -807,7 +945,7 @@
             <!-- Candidate 2 -->
             <div class="border border-dashed border-[#c4cbd8] bg-[#f8f9fc] p-5 rounded flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between mb-3">
+                <div class="portfolio-card-meta flex items-center justify-between gap-2 mb-3">
                   <span class="text-[11px] font-mono text-[#6c7688]">03 / DISCOVERY</span>
                   <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#e9edf4] text-[#586172]">Discovery</span>
                 </div>
@@ -821,7 +959,7 @@
             <!-- Candidate 3 -->
             <div class="border border-dashed border-[#c4cbd8] bg-[#f8f9fc] p-5 rounded flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between mb-3">
+                <div class="portfolio-card-meta flex items-center justify-between gap-2 mb-3">
                   <span class="text-[11px] font-mono text-[#6c7688]">04 / RESEARCH</span>
                   <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#e9edf4] text-[#586172]">Research</span>
                 </div>
@@ -844,9 +982,9 @@
     </section>
     
     <!-- WHAT WE BELIEVE (Structured Container Grid) -->
-    <section class="border-b border-[#d8dce6] bg-[#eef1f6] py-20 md:py-28" aria-labelledby="beliefs-heading">
+    <section class="mobile-section border-b border-[#d8dce6] bg-[#eef1f6] py-20 md:py-28" aria-labelledby="beliefs-heading">
       <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
-        <div class="max-w-2xl mb-12">
+        <div class="mobile-section-heading max-w-2xl mb-12">
           <span class="text-xs font-mono tracking-wider text-[#586172] uppercase block mb-2 font-medium">Foundations</span>
           <h2 id="beliefs-heading" class="text-2xl sm:text-3xl font-semibold text-[#080e1a] tracking-tight">
             What we believe
@@ -855,7 +993,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Principle 1 -->
-          <div class="p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
+          <div class="mobile-card p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs font-mono text-[#586172] tracking-widest font-semibold">PRINCIPLE 01</span>
               <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
@@ -866,7 +1004,7 @@
             </p>
           </div>
           <!-- Principle 2 -->
-          <div class="p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
+          <div class="mobile-card p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs font-mono text-[#586172] tracking-widest font-semibold">PRINCIPLE 02</span>
               <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
@@ -877,7 +1015,7 @@
             </p>
           </div>
           <!-- Principle 3 -->
-          <div class="p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
+          <div class="mobile-card p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs font-mono text-[#586172] tracking-widest font-semibold">PRINCIPLE 03</span>
               <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
@@ -888,7 +1026,7 @@
             </p>
           </div>
           <!-- Principle 4 -->
-          <div class="p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
+          <div class="mobile-card p-7 border border-[#d0d6e2] bg-[#ffffff] rounded-lg shadow-sm">
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs font-mono text-[#586172] tracking-widest font-semibold">PRINCIPLE 04</span>
               <span class="w-1.5 h-1.5 bg-[#080e1a]" aria-hidden="true"></span>
@@ -903,9 +1041,9 @@
     </section>
     
     <!-- ABOUT ZEROFRIK (Crisp Surface Section) -->
-    <section class="border-b border-[#d8dce6] bg-[#fbfcfd] py-20 md:py-28" id="about" aria-labelledby="about-heading">
+    <section class="mobile-section border-b border-[#d8dce6] bg-[#fbfcfd] py-20 md:py-28" id="about" aria-labelledby="about-heading">
       <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
-        <div class="max-w-3xl bg-[#ffffff] border border-[#d4d9e4] p-8 sm:p-12 rounded-xl shadow-sm">
+        <div class="mobile-card max-w-3xl bg-[#ffffff] border border-[#d4d9e4] p-8 sm:p-12 rounded-xl shadow-sm">
           <span class="text-xs font-mono tracking-wider text-[#586172] uppercase block mb-2 font-medium">Entity Overview</span>
           <h2 id="about-heading" class="text-2xl sm:text-3xl font-semibold text-[#080e1a] tracking-tight mb-6">
             Built to create useful products.
@@ -919,7 +1057,7 @@
             </p>
           </div>
           
-          <div class="mt-8 pt-6 border-t border-[#e2e6ee] flex flex-wrap items-center gap-8">
+          <div class="about-stats mt-8 pt-6 border-t border-[#e2e6ee] flex flex-wrap items-center gap-8">
             <div>
               <div class="text-[11px] font-mono text-[#6c7688] uppercase">Structure</div>
               <div class="text-sm font-semibold text-[#080e1a]">Independent Product Holding</div>
@@ -940,9 +1078,9 @@
     </section>
     
     <!-- FINAL CTA (Discourse Block) -->
-    <section class="border-b border-[#d8dce6] bg-[#f2f4f8] py-20 md:py-24" id="contact" aria-labelledby="contact-heading">
+    <section class="mobile-section border-b border-[#d8dce6] bg-[#f2f4f8] py-20 md:py-24" id="contact" aria-labelledby="contact-heading">
       <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter lg:px-gutter">
-        <div class="max-w-2xl bg-[#ffffff] border border-[#cfd5e2] p-8 sm:p-10 rounded-xl shadow-sm">
+        <div class="mobile-card max-w-2xl bg-[#ffffff] border border-[#cfd5e2] p-8 sm:p-10 rounded-xl shadow-sm">
           <div class="inline-flex items-center gap-2 mb-2">
             <span class="w-2 h-2 bg-[#080e1a]" aria-hidden="true"></span>
             <span class="text-xs font-mono uppercase tracking-wider text-[#555d6e] font-semibold">Direct Discourse</span>
@@ -1003,18 +1141,18 @@
     </div>
   </footer>
   <!-- Contact Modal (Minimal: Email + Message) -->
-  <div id="contact-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6" aria-labelledby="contact-modal-title" role="dialog" aria-modal="true">
+  <div id="contact-modal" class="mobile-modal fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6" aria-labelledby="contact-modal-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-[#080e1a]/60 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeContactModal()"></div>
     
-    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden border border-[#d6dbe6] transform transition-all">
-      <div class="px-6 py-5 border-b border-[#e5e9f0] flex items-center justify-between bg-[#fbfcfd]">
+    <div class="mobile-modal-panel relative bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden border border-[#d6dbe6] transform transition-all">
+      <div class="mobile-modal-header px-6 py-5 border-b border-[#e5e9f0] flex items-center justify-between bg-[#fbfcfd]">
         <h3 class="text-lg font-semibold text-[#080e1a]" id="contact-modal-title">Contact Us</h3>
-        <button type="button" class="text-[#747e90] hover:text-[#080e1a] transition-colors rounded-full p-1 hover:bg-[#eef1f6]" onclick="closeContactModal()" aria-label="Close modal">
+        <button type="button" class="mobile-modal-close text-[#747e90] hover:text-[#080e1a] transition-colors rounded-full p-1 hover:bg-[#eef1f6]" onclick="closeContactModal()" aria-label="Close modal">
           <span class="material-symbols-outlined text-xl" aria-hidden="true">close</span>
         </button>
       </div>
       
-      <form id="contact-form" class="px-6 py-6 space-y-4">
+      <form id="contact-form" class="mobile-modal-form px-6 py-6 space-y-4 overflow-y-auto">
         <div>
           <label for="contact-email" class="block text-xs font-mono font-medium text-[#4a5160] mb-1.5 uppercase tracking-wider">Email Address *</label>
           <input type="email" id="contact-email" name="email" required class="block w-full rounded-md border-[#cfd4df] shadow-sm focus:border-[#080e1a] focus:ring-[#080e1a] sm:text-sm px-3 py-2 text-[#080e1a] bg-[#f8f9fc] placeholder-[#a5adbb]" placeholder="you@example.com">
@@ -1034,21 +1172,21 @@
   </div>
 
   <!-- Discuss Your Project Modal (Name, Email, Company, Service, Project Details) -->
-  <div id="project-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6" aria-labelledby="project-modal-title" role="dialog" aria-modal="true">
+  <div id="project-modal" class="mobile-modal fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6" aria-labelledby="project-modal-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-[#080e1a]/60 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeProjectModal()"></div>
     
-    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden border border-[#d6dbe6] transform transition-all max-h-[90vh] flex flex-col">
-      <div class="px-6 py-5 border-b border-[#e5e9f0] flex items-center justify-between bg-[#fbfcfd] flex-shrink-0">
+    <div class="mobile-modal-panel relative bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden border border-[#d6dbe6] transform transition-all max-h-[90vh] flex flex-col">
+      <div class="mobile-modal-header px-6 py-5 border-b border-[#e5e9f0] flex items-center justify-between gap-3 bg-[#fbfcfd] flex-shrink-0">
         <div>
           <h3 class="text-lg font-semibold text-[#080e1a]" id="project-modal-title">Discuss Your Project</h3>
           <p class="text-xs text-[#6e7787] mt-0.5 font-mono">Tell us about your problem or what you need built</p>
         </div>
-        <button type="button" class="text-[#747e90] hover:text-[#080e1a] transition-colors rounded-full p-1 hover:bg-[#eef1f6]" onclick="closeProjectModal()" aria-label="Close modal">
+        <button type="button" class="mobile-modal-close text-[#747e90] hover:text-[#080e1a] transition-colors rounded-full p-1 hover:bg-[#eef1f6]" onclick="closeProjectModal()" aria-label="Close modal">
           <span class="material-symbols-outlined text-xl" aria-hidden="true">close</span>
         </button>
       </div>
       
-      <form id="project-form" class="px-6 py-6 space-y-4 overflow-y-auto flex-grow">
+      <form id="project-form" class="mobile-modal-form px-6 py-6 space-y-4 overflow-y-auto flex-grow">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label for="project-name" class="block text-xs font-mono font-medium text-[#4a5160] mb-1.5 uppercase tracking-wider">Your Name *</label>
