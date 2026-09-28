@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why expense tracking fails before it starts — and what we built instead | ZeroFrik</title>
+  <meta name="description" content="Manual expense tracking is a chore, but sharing financial data with another cloud service should not be the alternative. The story behind 1Tap, a local-first Android expense tracker.">
+  <meta name="author" content="ZeroFrik">
+  <meta name="keywords" content="expense tracking, private expense tracker, Android expense tracker, SMS expense tracking, local-first finance app, 1Tap">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f7f8fb">
+  <link rel="canonical" href="https://zerofrik.com/blog/onetap/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png?v=2">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ZeroFrik">
+  <meta property="og:url" content="https://zerofrik.com/blog/onetap/">
+  <meta property="og:title" content="Why expense tracking fails before it starts">
+  <meta property="og:description" content="The customer problem that led us to build 1Tap, a local-first Android expense tracker.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Why expense tracking fails before it starts">
+  <meta name="twitter:description" content="The customer problem that led us to build 1Tap, a local-first Android expense tracker.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Hanken Grotesk', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] } } } }
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"Why expense tracking fails before it starts","description":"The customer problem that led us to build 1Tap, a local-first Android expense tracker.","datePublished":"2026-09-28T07:15:00-07:00","dateModified":"2026-09-28T07:15:00-07:00","inLanguage":"en-US","author":{"@type":"Organization","name":"ZeroFrik","url":"https://zerofrik.com/"},"publisher":{"@type":"Organization","name":"ZeroFrik","url":"https://zerofrik.com/"},"isPartOf":{"@type":"Blog","name":"ZeroFrik Journal","url":"https://zerofrik.com/blog/"},"mainEntityOfPage":"https://zerofrik.com/blog/onetap/"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://zerofrik.com/"},{"@type":"ListItem","position":2,"name":"Journal","item":"https://zerofrik.com/blog/"},{"@type":"ListItem","position":3,"name":"Why expense tracking fails before it starts","item":"https://zerofrik.com/blog/onetap/"}]}
+  </script>
+  <style>
+    body { background: #f7f8fb; color: #121720; }
+    .grid-paper { background-image: linear-gradient(#e5e9f0 1px, transparent 1px), linear-gradient(90deg, #e5e9f0 1px, transparent 1px); background-size: 28px 28px; }
+    .article-copy p { margin-top: 1.25rem; color: #4a5160; line-height: 1.8; font-size: 1.0625rem; }
+    .article-copy h2 { margin-top: 3.5rem; color: #080e1a; font-size: 1.7rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.2; }
+    .article-copy h3 { margin-top: 1.8rem; color: #080e1a; font-size: 1.1rem; font-weight: 700; }
+    .article-copy ul { margin-top: 1.25rem; display: grid; gap: .8rem; color: #4a5160; line-height: 1.65; }
+    .article-copy li { position: relative; padding-left: 1.35rem; }
+    .article-copy li::before { content: '—'; position: absolute; left: 0; color: #080e1a; }
+    .onetap-cta { background: radial-gradient(circle at 86% 15%, rgba(125, 217, 167, .32), transparent 28%), radial-gradient(circle at 12% 100%, rgba(217, 173, 103, .34), transparent 34%), #fffdf8; }
+    .onetap-orbit { background: conic-gradient(from 210deg, #d9ad67, #7dd9a7, #d9ad67); }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <header class="sticky top-0 z-50 border-b border-[#dce1ea] bg-white/90 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <a class="flex items-center gap-2.5" href="/" aria-label="ZeroFrik home">
+        <img src="../../favicon.svg" alt="ZeroFrik" class="h-7 w-7" width="28" height="28">
+        <span class="text-base font-bold uppercase tracking-tight text-[#080e1a]">ZeroFrik</span>
+      </a>
+      <a href="/blog/" class="inline-flex items-center gap-2 rounded border border-[#cfd4df] bg-white px-3 py-2 font-mono text-[11px] text-[#343b49] transition hover:border-[#080e1a]">
+        <span aria-hidden="true">←</span> Journal
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid-paper overflow-hidden border-b border-[#dce1ea]">
+      <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+        <div class="max-w-3xl rounded-xl border border-[#d7dce6] bg-[#f7f8fb]/90 p-6 shadow-sm sm:p-10">
+          <div class="mb-6 flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-wider text-[#606979]">
+            <span class="rounded bg-[#080e1a] px-2 py-1 text-white">Product story</span>
+            <span>1Tap</span><span aria-hidden="true">•</span><span>Closed beta</span>
+          </div>
+          <h1 class="max-w-2xl text-4xl font-bold tracking-[-.045em] text-[#080e1a] sm:text-6xl sm:leading-[1.02]">Expense tracking fails before it starts.</h1>
+          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-[#4d5565] sm:text-xl">Not because people do not care about their money. Because the usual way of tracking it asks too much before it gives anything back.</p>
+          <div class="mt-8 flex flex-wrap gap-3 font-mono text-xs text-[#697384]"><span>By ZeroFrik</span><span aria-hidden="true">/</span><time datetime="2026-09-28T07:15:00-07:00">Published September 28, 2026 at 7:15 AM PT</time><span aria-hidden="true">/</span><span>Reading time: 5 min</span></div>
+        </div>
+      </div>
+    </section>
+
+    <article class="article-copy mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20">
+      <p class="mt-0 text-xl font-medium leading-relaxed text-[#252c38] sm:text-2xl">You make a payment, receive an SMS, and carry on with your day. Repeat that a few times a day and, by the end of the month, the question is familiar: <em>where did my money actually go?</em></p>
+
+      <p>Most people do not need another lecture about budgeting. They need a record they can trust—without turning every coffee, cab ride, bill, or grocery trip into homework.</p>
+
+      <h2>Manual tracking is a good idea that rarely survives real life.</h2>
+      <p>Expense apps often begin with a promise of clarity and end with an abandoned spreadsheet or an empty dashboard. The friction is small in the moment, but relentless: open an app, add the amount, choose a category, remember what the payment was for. Do it again tomorrow. And the next day.</p>
+      <p>The alternative can feel just as uncomfortable. Many services ask people to hand over bank credentials, send transaction data to a cloud account, or accept a complicated system before they have seen any value from it.</p>
+
+      <div class="my-10 rounded-xl border border-[#cfd6e1] bg-white p-6 shadow-sm sm:p-8">
+        <p class="mt-0 font-mono text-xs uppercase tracking-wider text-[#697384]">The trade-off people are given</p>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-lg bg-[#f4f6fa] p-5"><p class="mt-0 text-base font-semibold text-[#080e1a]">Track everything manually</p><p class="mt-2 text-sm leading-relaxed text-[#5b6473]">Private, but tedious enough that consistency disappears.</p></div>
+          <div class="rounded-lg bg-[#f4f6fa] p-5"><p class="mt-0 text-base font-semibold text-[#080e1a]">Hand data to another service</p><p class="mt-2 text-sm leading-relaxed text-[#5b6473]">Convenient, but requires trust before the product has earned it.</p></div>
+        </div>
+      </div>
+
+      <h2>We thought there should be a third option.</h2>
+      <p>For many Android users, a transaction already creates a useful signal: a bank SMS. It may include the amount, merchant, direction of payment, reference, and time. The useful question is not how to ask people to enter it all again. It is how to help them use that signal while keeping the data on their own phone.</p>
+      <p>That question led us to <strong>1Tap</strong>.</p>
+
+      <h2>Introducing 1Tap: a local-first expense tracker for Android.</h2>
+      <p>1Tap is designed to turn eligible bank transaction SMS messages into a personal transaction ledger. With the user’s permission, it scans SMS locally on the device, extracts supported transaction details, and lets the user review, correct, categorize, and understand their spending.</p>
+      <ul>
+        <li><strong>Local processing:</strong> transaction parsing and storage happen on the device.</li>
+        <li><strong>User choice:</strong> SMS access is optional; manual transaction entry is available without it.</li>
+        <li><strong>Useful context:</strong> transactions can be categorized, corrected, and supplemented with notes or payment methods.</li>
+        <li><strong>History when it helps:</strong> during setup, users can choose to scan eligible past SMS messages to build an initial ledger.</li>
+      </ul>
+
+      <h2>How it works today.</h2>
+      <div class="mt-7 grid gap-3 sm:grid-cols-3">
+        <div class="rounded-lg border border-[#d8dde6] bg-white p-5"><span class="font-mono text-xs text-[#697384]">01</span><h3 class="mt-3">You choose access.</h3><p class="mt-2 text-sm leading-relaxed text-[#5b6473]">Enable SMS access or begin with manual transactions. The choice stays with you.</p></div>
+        <div class="rounded-lg border border-[#d8dde6] bg-white p-5"><span class="font-mono text-xs text-[#697384]">02</span><h3 class="mt-3">1Tap reads locally.</h3><p class="mt-2 text-sm leading-relaxed text-[#5b6473]">Eligible bank transaction messages are parsed and matched against your existing ledger.</p></div>
+        <div class="rounded-lg border border-[#d8dde6] bg-white p-5"><span class="font-mono text-xs text-[#697384]">03</span><h3 class="mt-3">You stay in control.</h3><p class="mt-2 text-sm leading-relaxed text-[#5b6473]">Edit merchant details, categories, dates, payment modes, and notes when the automatic result needs help.</p></div>
+      </div>
+
+      <h2>Privacy is part of the product, not a footnote.</h2>
+      <p>Financial information deserves a higher bar. 1Tap is built without a cloud account or bank login for its core tracking experience. It does not request Android’s internet permission, and its local database lives on the user’s device. That does not make the product perfect; it makes the boundary clear.</p>
+      <p>SMS formats vary between banks and change over time, so parsing will never be magic. That is why correction and manual entry are first-class parts of the product—not an afterthought.</p>
+
+      <h2>We are building it with real users, carefully.</h2>
+      <p>1Tap is currently in closed Android beta. We are learning which transaction messages need better support, where categories need more nuance, and what people actually need to feel more in control of their spending. We would rather be precise about what works today than promise features that are not yet there.</p>
+
+      <aside class="onetap-cta relative mt-12 overflow-hidden rounded-2xl border border-[#d9ad67] p-7 text-[#080e1a] shadow-md sm:p-9">
+        <div class="onetap-orbit absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-80 blur-[1px]" aria-hidden="true"></div>
+        <div class="relative">
+          <p class="inline-flex items-center gap-2 rounded-full border border-[#007249]/30 bg-[#e3f8eb] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[.15em] text-[#005234]"><span class="h-1.5 w-1.5 rounded-full bg-[#007249]" aria-hidden="true"></span>1Tap closed beta</p>
+          <h2 class="mt-5 text-2xl font-bold tracking-tight text-[#080e1a] sm:text-3xl">Want to follow the product?</h2>
+          <p class="mt-3 max-w-xl leading-relaxed text-[#3f4856]">Visit the 1Tap product page to learn more about the beta and the local-first approach behind it.</p>
+          <a href="https://1tap.zerofrik.com/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center rounded-lg bg-[#007249] px-4 py-3 font-mono text-xs font-bold text-white shadow-sm transition hover:bg-[#005c3c]">Visit 1Tap <span class="ml-2" aria-hidden="true">↗</span></a>
+        </div>
+      </aside>
+    </article>
+  </main>
+
+  <footer class="border-t border-[#dce1ea] bg-white">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-xs text-[#697384] sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <p>© 2026 ZeroFrik. Built with discipline and focus.</p>
+      <div class="flex gap-5 font-mono"><a class="hover:text-[#080e1a]" href="/">Home</a><a class="hover:text-[#080e1a]" href="/privacy-policy/">Privacy</a></div>
+    </div>
+  </footer>
+</body>
+</html>
