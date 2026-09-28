@@ -92,5 +92,12 @@
   <footer class="border-t border-[#dce1ea] bg-white">
     <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-xs text-[#697384] sm:flex-row sm:items-center sm:justify-between sm:px-6"><p>© 2026 ZeroFrik. Built with discipline and focus.</p><div class="flex gap-5 font-mono"><a class="hover:text-[#080e1a]" href="/">Home</a><a class="hover:text-[#080e1a]" href="/privacy-policy/">Privacy</a></div></div>
   </footer>
+  <script>
+    document.querySelector('a[href="/blog/onetap/"]')?.addEventListener('click', () => {
+      if (typeof gtag === 'function') gtag('event', 'select_content', {
+        product_name: 'zerofrik', page_type: 'journal', content_type: 'article', item_id: 'onetap_story', placement: 'journal_listing'
+      });
+    });
+  </script>
 </body>
 </html>

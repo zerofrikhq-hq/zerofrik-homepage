@@ -146,5 +146,12 @@
       <div class="flex gap-5 font-mono"><a class="hover:text-[#080e1a]" href="/">Home</a><a class="hover:text-[#080e1a]" href="/privacy-policy/">Privacy</a></div>
     </div>
   </footer>
+  <script>
+    document.querySelector('a[href="https://1tap.zerofrik.com/"]')?.addEventListener('click', () => {
+      if (typeof gtag === 'function') gtag('event', 'select_content', {
+        product_name: 'zerofrik', page_type: 'article', content_type: 'product', item_id: '1tap', placement: 'article_cta'
+      });
+    });
+  </script>
 </body>
 </html>

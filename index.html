@@ -1088,10 +1088,16 @@
 
   <script>
     const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw3V4ZcGXQQSsza3Q8Npd8CwKawwTWMYlqIKhiO3lnpSQgm-uAiA6BxZFNdF1htJPep/exec';
+    const trackAnalytics = (eventName, parameters = {}) => {
+      if (typeof gtag === 'function') gtag('event', eventName, {
+        product_name: 'zerofrik', page_type: 'homepage', ...parameters
+      });
+    };
 
     /* ── Contact Modal (minimal) ── */
     function openContactModal(e) {
       if (e) e.preventDefault();
+      trackAnalytics('open_contact', { placement: 'homepage' });
       document.getElementById('contact-modal').classList.remove('hidden');
       document.getElementById('contact-email').focus();
     }
@@ -1146,6 +1152,7 @@
     /* ── Project Modal (rich) ── */
     function openProjectModal(e, service) {
       if (e) e.preventDefault();
+      trackAnalytics('open_project_enquiry', { service: service || 'general_enquiry' });
       document.getElementById('project-modal').classList.remove('hidden');
       if (service) {
         const sel = document.getElementById('project-service');
@@ -1218,16 +1225,17 @@
       }
     });
 
-    // Privacy-safe outbound link tracking for 1Tap
-    document.querySelectorAll('a[href*="1tap.zerofrik.com"]').forEach(function(link) {
-      link.addEventListener('click', function() {
-        if (typeof gtag === 'function') {
-          gtag('event', 'select_content', {
-            content_type: 'product',
-            item_id: '1tap'
-          });
-        }
-      });
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (href.includes('1tap.zerofrik.com') || href.includes('updateproof.zerofrik.com')) {
+        trackAnalytics('select_content', { content_type: 'product', item_id: href.includes('1tap') ? '1tap' : 'updateproof', placement: 'homepage' });
+      } else if (href === '/blog/' || href === '/blog/onetap/') {
+        trackAnalytics('select_content', { content_type: 'journal', item_id: href === '/blog/' ? 'journal' : 'onetap_story' });
+      } else if (href.startsWith('#')) {
+        trackAnalytics('select_content', { content_type: 'navigation', item_id: href.slice(1) || 'home' });
+      }
     });
   </script>
 </body>
